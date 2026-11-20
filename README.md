@@ -49,7 +49,7 @@ real videos. More results are on the [project page](https://tencent-hunyuan.gith
 - **Shot-Debiased Consistency (SDC).** CLIP/DINO similarity mistakes intended cuts (new subject,
   new scene) for inconsistency and barely reacts to real style clashes. SDC compares cross-shot
   style change with what real videos show at the same amount of content change. It detects
-  **78.0%** of single-shot style edits at 5% FPR and reaches **AUC 0.969** against human judgments.
+  **78.0%** of single-shot style edits at 5% FPR and reaches **AUC 0.97** against human judgments on real footage.
 
 ## Abstract
 
@@ -374,8 +374,9 @@ Training on independently edited references also makes text-only generation more
 | DINO < 0.25 | 0.170 | 0.339 |
 | Lowest-DINO 10% | 0.117 | 0.322 |
 
-Human study: six professional raters labelled 120 clips. SDC separates consistent from
-inconsistent clips with **AUC 0.969** (95% CI [0.931, 0.995]).
+Human study: six professional raters rated 150 clips (real splices, natural multi-shot clips and
+generated clips). SDC agrees with the mean rating at ρ = 0.68 and separates consistent from
+inconsistent clips with **AUC 0.90** (95% CI [0.84, 0.95]); on real footage it reaches **AUC 0.97**.
 
 ## Release Status
 
