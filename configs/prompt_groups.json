@@ -1,0 +1,4505 @@
+{
+  "version": 1,
+  "description_policy": "Restore only original video-reference shot prose; preserve existing shared style, other shots, and control instructions. Evaluation long descriptions are not substituted.",
+  "benchmark_case_ids": [
+    2,
+    4,
+    5,
+    6,
+    9,
+    10,
+    14,
+    15,
+    19,
+    21,
+    22,
+    24,
+    26,
+    27,
+    29,
+    33,
+    34,
+    35,
+    37,
+    38,
+    39,
+    40,
+    41,
+    43,
+    44,
+    47,
+    49,
+    50,
+    51,
+    53,
+    54,
+    55,
+    57,
+    58,
+    59,
+    60,
+    62,
+    63,
+    65,
+    66,
+    69,
+    70,
+    71,
+    72,
+    74,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    84,
+    85,
+    86,
+    89,
+    91,
+    92,
+    94,
+    95,
+    96,
+    97,
+    99,
+    100,
+    101,
+    102,
+    106,
+    107,
+    109,
+    110,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    124,
+    125,
+    127,
+    128,
+    131,
+    133,
+    136,
+    137,
+    139,
+    140,
+    141,
+    147,
+    149,
+    150,
+    155,
+    156,
+    159,
+    161,
+    162,
+    163,
+    164,
+    165,
+    166,
+    169,
+    171,
+    175,
+    177,
+    179,
+    180,
+    182,
+    183,
+    184,
+    185,
+    188,
+    190,
+    192,
+    194,
+    195,
+    196,
+    197,
+    200,
+    201,
+    202,
+    204,
+    206,
+    208,
+    209,
+    211,
+    212,
+    213,
+    214,
+    216,
+    219,
+    221,
+    225,
+    226,
+    227,
+    228,
+    229,
+    230,
+    231,
+    232,
+    233,
+    235,
+    236,
+    237,
+    238,
+    239,
+    240,
+    241,
+    242,
+    248,
+    249,
+    250,
+    251,
+    252,
+    253,
+    255,
+    256,
+    257,
+    258,
+    259,
+    260,
+    261,
+    262,
+    266,
+    267,
+    269,
+    270,
+    273,
+    278,
+    281,
+    282,
+    283,
+    285,
+    287,
+    288,
+    289,
+    290,
+    293,
+    296,
+    298,
+    299,
+    300,
+    301,
+    302,
+    303,
+    304,
+    305,
+    306,
+    307,
+    309,
+    311,
+    312,
+    314,
+    316,
+    317,
+    320,
+    322,
+    323,
+    328,
+    329,
+    330,
+    334,
+    335,
+    336,
+    337,
+    338,
+    340,
+    342,
+    344,
+    346,
+    347,
+    348,
+    350,
+    351,
+    352,
+    356,
+    357,
+    360,
+    365,
+    366,
+    367,
+    369,
+    370,
+    373,
+    378,
+    379,
+    380,
+    383,
+    386,
+    387,
+    388,
+    389,
+    390,
+    391,
+    392,
+    394,
+    395,
+    399,
+    400,
+    401,
+    403,
+    404,
+    406,
+    407,
+    408,
+    409,
+    412,
+    413,
+    414,
+    415,
+    418,
+    419,
+    424,
+    425,
+    427,
+    428,
+    430,
+    431,
+    435,
+    437,
+    438,
+    439,
+    441,
+    442,
+    443,
+    444,
+    447,
+    448,
+    449,
+    451,
+    452,
+    455,
+    456,
+    458,
+    460,
+    462,
+    464,
+    465,
+    474,
+    475,
+    478,
+    479,
+    480,
+    481,
+    483,
+    484,
+    485,
+    486,
+    487,
+    488,
+    489,
+    490,
+    491,
+    492,
+    493,
+    495,
+    497,
+    499,
+    500
+  ],
+  "control_only_case_ids": [
+    5,
+    27,
+    33,
+    37,
+    43,
+    49,
+    54,
+    58,
+    59,
+    63,
+    69,
+    80,
+    81,
+    85,
+    94,
+    97,
+    100,
+    101,
+    113,
+    116,
+    117,
+    121,
+    131,
+    133,
+    136,
+    137,
+    149,
+    156,
+    159,
+    162,
+    163,
+    164,
+    165,
+    175,
+    182,
+    188,
+    190,
+    194,
+    195,
+    196,
+    201,
+    208,
+    209,
+    228,
+    229,
+    231,
+    236,
+    240,
+    249,
+    250,
+    255,
+    259,
+    261,
+    266,
+    285,
+    288,
+    290,
+    296,
+    298,
+    301,
+    302,
+    303,
+    309,
+    311,
+    316,
+    320,
+    323,
+    329,
+    330,
+    335,
+    351,
+    352,
+    365,
+    370,
+    373,
+    379,
+    380,
+    383,
+    387,
+    390
+  ],
+  "described_case_ids": [
+    2,
+    4,
+    6,
+    9,
+    10,
+    14,
+    15,
+    19,
+    21,
+    22,
+    24,
+    26,
+    29,
+    34,
+    35,
+    38,
+    39,
+    40,
+    41,
+    44,
+    47,
+    50,
+    51,
+    53,
+    55,
+    57,
+    60,
+    62,
+    65,
+    66,
+    70,
+    71,
+    72,
+    74,
+    77,
+    78,
+    79,
+    82,
+    84,
+    86,
+    89,
+    91,
+    92,
+    95,
+    96,
+    99,
+    102,
+    106,
+    107,
+    109,
+    110,
+    114,
+    115,
+    118,
+    119,
+    120,
+    122,
+    124,
+    125,
+    127,
+    128,
+    139,
+    140,
+    141,
+    147,
+    150,
+    155,
+    161,
+    166,
+    169,
+    171,
+    177,
+    179,
+    180,
+    183,
+    184,
+    185,
+    192,
+    197,
+    200,
+    202,
+    204,
+    206,
+    211,
+    212,
+    213,
+    214,
+    216,
+    219,
+    221,
+    225,
+    226,
+    227,
+    230,
+    232,
+    233,
+    235,
+    237,
+    238,
+    239,
+    241,
+    242,
+    248,
+    251,
+    252,
+    253,
+    256,
+    257,
+    258,
+    260,
+    262,
+    267,
+    269,
+    270,
+    273,
+    278,
+    281,
+    282,
+    283,
+    287,
+    289,
+    293,
+    299,
+    300,
+    304,
+    305,
+    306,
+    307,
+    312,
+    314,
+    317,
+    322,
+    328,
+    334,
+    336,
+    337,
+    338,
+    340,
+    342,
+    344,
+    346,
+    347,
+    348,
+    350,
+    356,
+    357,
+    360,
+    366,
+    367,
+    369,
+    378,
+    386,
+    388,
+    389,
+    391,
+    392,
+    394,
+    395,
+    399,
+    400
+  ],
+  "cases": [
+    {
+      "case": 2,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          11
+        ],
+        [
+          11,
+          28
+        ],
+        [
+          28,
+          38
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a stark, black and white room, a heavy-set man with glasses smiles and chuckles, his face filling the frame.",
+        "3": "The shot cuts back to the man with glasses, who continues to smile and chuckle, his face partially in shadow and his expression still unsettling."
+      }
+    },
+    {
+      "case": 4,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          17
+        ],
+        [
+          17,
+          28
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The scene opens on a vast, sunlit sand dune, its golden surface casting a deep shadow."
+      }
+    },
+    {
+      "case": 6,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          22
+        ],
+        [
+          22,
+          35
+        ],
+        [
+          35,
+          53
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "Inside a grim, stone-walled dungeon, a guard in a blue uniform inflicts torture on a man whose arms are bound to a wooden post.",
+        "3": "A high-ranking official in a vibrant red robe stands by, observing the brutal scene with a subtle, cruel smile."
+      }
+    },
+    {
+      "case": 9,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          9
+        ],
+        [
+          9,
+          17
+        ],
+        [
+          17,
+          29
+        ],
+        [
+          29,
+          49
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a brightly lit, tropical-themed lounge, several groups of people watch a television screen.",
+        "4": "The television displays a chaotic scene of people on a bed."
+      }
+    },
+    {
+      "case": 10,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          35
+        ],
+        [
+          35,
+          47
+        ],
+        [
+          47,
+          59
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "At night, a man with glasses sits in the driver's seat of a car, his face illuminated by the cool glow of city lights.",
+        "3": "The scene then cuts to a different man in a brightly lit shopping mall, also on the phone, while a woman stands beside him."
+      }
+    },
+    {
+      "case": 14,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          21
+        ],
+        [
+          21,
+          50
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a dimly lit industrial area at night, a man wearing a yellow hard hat and dark jacket cautiously peeks out from a white door before disappearing inside."
+      }
+    },
+    {
+      "case": 15,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          4
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          9,
+          55
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a dimly lit, vintage-style bedroom, a man in a trench coat turns from a window with a serious expression.",
+        "3": "The man retrieves a rolled-up object from a wardrobe and is immediately embraced by the woman."
+      }
+    },
+    {
+      "case": 19,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          28
+        ],
+        [
+          28,
+          52
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a dimly lit room, a woman with short hair and snowflakes on her coat looks up with a dawning expression of understanding."
+      }
+    },
+    {
+      "case": 21,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          15
+        ],
+        [
+          15,
+          24
+        ],
+        [
+          24,
+          35
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a softly lit room with mint-green walls, a woman with her hair in two braids sits on a wooden bench.",
+        "3": "She looks down with a tender smile, her hands resting near a baby's crib."
+      }
+    },
+    {
+      "case": 22,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          23
+        ],
+        [
+          23,
+          33
+        ],
+        [
+          33,
+          40
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "Inside a modern vehicle, a woman with long black hair holds a complex silver and black device, her face a mask of shock and determination.",
+        "3": "The scene then cuts to two young children, a boy and a girl, who stare ahead with fearful expressions."
+      }
+    },
+    {
+      "case": 24,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          32
+        ],
+        [
+          32,
+          47
+        ],
+        [
+          47,
+          64
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The video opens with a vortex of blue and white energy that coalesces into a sleek, futuristic sword.",
+        "3": "The sword's tip is held before his face as he speaks with a determined expression."
+      }
+    },
+    {
+      "case": 26,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          18
+        ],
+        [
+          18,
+          32
+        ],
+        [
+          32,
+          38
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a dark, rocky wasteland, a massive green armored warrior gathers power, surrounded by crackling green energy spheres.",
+        "3": "The scene then cuts to a determined young woman with vibrant pink hair, who speaks with resolve while holding a large sword."
+      }
+    },
+    {
+      "case": 29,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          8
+        ],
+        [
+          8,
+          25
+        ],
+        [
+          25,
+          59
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "A woman with blonde hair and smudged makeup stands on a green lawn, speaking frantically into a white cordless phone with a panicked expression.",
+        "3": "The video then returns to the woman, who continues her desperate phone call, her face contorted in fear and urgency, before she covers her mouth in shock."
+      }
+    },
+    {
+      "case": 34,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          13
+        ],
+        [
+          13,
+          26
+        ],
+        [
+          26,
+          42
+        ],
+        [
+          42,
+          53
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The scene opens from inside a car, showing a silhouetted driver navigating a rainy city street at night.",
+        "4": "A close-up then reveals the driver, an East Asian man with a mustache, his face set in a stern, focused expression as he gazes out the window."
+      }
+    },
+    {
+      "case": 35,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          13
+        ],
+        [
+          13,
+          19
+        ],
+        [
+          19,
+          26
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a cool-toned, minimalist hallway, a woman in a sleek black outfit confidently walks towards the camera, her expression intense.",
+        "3": "Her posture is poised and deliberate as she moves through the dark, urban environment, suggesting a mission or confrontation."
+      }
+    },
+    {
+      "case": 38,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          11
+        ],
+        [
+          11,
+          25
+        ],
+        [
+          25,
+          35
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "Inside a brightly lit airplane cockpit, a scene of intense crisis unfolds.",
+        "3": "His captain, a man with a mustache, maintains a grimly focused expression, issuing commands."
+      }
+    },
+    {
+      "case": 39,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          8
+        ],
+        [
+          8,
+          21
+        ],
+        [
+          21,
+          39
+        ],
+        [
+          39,
+          47
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a sun-drenched desert canyon, a woman with braided hair, wearing a red jacket and skydiving gear, expresses her excitement.",
+        "4": "Finally, she points forward with a triumphant expression, welcoming someone to the 'Valley of Fire'."
+      }
+    },
+    {
+      "case": 40,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          15
+        ],
+        [
+          15,
+          30
+        ],
+        [
+          30,
+          51
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a warmly lit, elegant dining room, a woman with short brown hair stares with a shocked and distressed expression.",
+        "3": "The camera returns to a close-up of her face, her expression frozen in disbelief and hurt as she watches him depart."
+      }
+    },
+    {
+      "case": 41,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          38
+        ],
+        [
+          38,
+          53
+        ],
+        [
+          53,
+          62
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "On a bright, sunny day, a young man dressed in a dark blue uniform stands on a well-maintained green lawn.",
+        "3": "In the background, a large red fire truck is parked on a paved road, with another one visible further away."
+      }
+    },
+    {
+      "case": 44,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          10
+        ],
+        [
+          10,
+          22
+        ],
+        [
+          22,
+          35
+        ],
+        [
+          35,
+          45
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In the courtyard of a traditional Chinese building, an older man in a patterned robe speaks to a younger man in a grey robe.",
+        "4": "The scene then cuts to a woman in an elaborate white and gold dress, who watches them with a serious gaze."
+      }
+    },
+    {
+      "case": 47,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          12
+        ],
+        [
+          12,
+          25
+        ],
+        [
+          25,
+          39
+        ],
+        [
+          39,
+          51
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a vibrant anime style, a young girl with orange pigtails and a pink dress runs through a park bathed in the golden light of sunset.",
+        "4": "Finally, a close-up reveals the boy's hands holding a red and white striped box, suggesting a gift or a shared moment."
+      }
+    },
+    {
+      "case": 50,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          21
+        ],
+        [
+          21,
+          33
+        ],
+        [
+          33,
+          45
+        ],
+        [
+          45,
+          57
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a vibrant, candy-colored cartoon world, a blue-haired boy and a green-haired girl with horns engage in playful antics.",
+        "4": "They are later seen with a pink, heart-shaped creature."
+      }
+    },
+    {
+      "case": 51,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          12
+        ],
+        [
+          12,
+          21
+        ],
+        [
+          21,
+          39
+        ],
+        [
+          39,
+          53
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "On a bright, sunny day, a muscular man with a tail carries a woman with long white hair on his back.",
+        "4": "The man continues to run and then tumbles down a steep, rocky slope, still carrying the woman."
+      }
+    },
+    {
+      "case": 53,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          12
+        ],
+        [
+          12,
+          20
+        ],
+        [
+          20,
+          30
+        ],
+        [
+          30,
+          51
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "A large, red and yellow robotic lion with a mechanical body runs powerfully across a grassy field, kicking up dust.",
+        "4": "The scene culminates with the robot and carriage reaching the edge of a high cliff, overlooking a vast city below, as the camera pulls back to reveal the grand scale of the environment."
+      }
+    },
+    {
+      "case": 55,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          32
+        ],
+        [
+          32,
+          39
+        ],
+        [
+          39,
+          49
+        ],
+        [
+          49,
+          56
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a cluttered studio, an artist's hand flips through a stack of whimsical paintings.",
+        "4": "The hand continues to flip to a portrait of a smiling man in a suit."
+      }
+    },
+    {
+      "case": 57,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          13
+        ],
+        [
+          13,
+          20
+        ],
+        [
+          20,
+          32
+        ],
+        [
+          32,
+          41
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a dimly lit room, a man with short hair looks down with a pained expression while speaking.",
+        "4": "Finally, the camera focuses on a framed photograph showing two smiling men, one of whom is the younger man from the previous shot, creating a stark contrast with the current mood."
+      }
+    },
+    {
+      "case": 60,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          8
+        ],
+        [
+          8,
+          24
+        ],
+        [
+          24,
+          37
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The scene opens with a viscous pink liquid splattering onto a cracked, blue crystalline surface.",
+        "3": "Finally, a wide shot reveals her kneeling in a dark, cavernous chamber, channeling energy into a massive, glowing magical sigil on the floor."
+      }
+    },
+    {
+      "case": 62,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          12
+        ],
+        [
+          12,
+          16
+        ],
+        [
+          16,
+          21
+        ],
+        [
+          21,
+          27
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "Against a dramatic orange sunset sky, a young anime girl with blonde hair, dressed in a pink and yellow outfit, leaps into the air.",
+        "4": "The girl then runs at incredible speed through the forest, her expression determined, as the background blurs into streaks of green and yellow, conveying immense velocity."
+      }
+    },
+    {
+      "case": 65,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          13
+        ],
+        [
+          13,
+          33
+        ],
+        [
+          33,
+          75
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "A female chef with blonde hair and tattoos is introduced in a close-up, speaking about her recipe.",
+        "3": "She carefully wraps the filling in dough, then moves to a large industrial deep fryer."
+      }
+    },
+    {
+      "case": 66,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          18
+        ],
+        [
+          18,
+          36
+        ],
+        [
+          36,
+          63
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a tranquil courtyard of a traditional Chinese building, two men dressed in historical robes are locked in a serious conversation.",
+        "3": "The camera then cuts to a close-up of him from the side, revealing green grapes on a vine behind him as he continues his point."
+      }
+    },
+    {
+      "case": 70,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          5
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          10,
+          17
+        ],
+        [
+          17,
+          25
+        ],
+        [
+          25,
+          36
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a high-stakes basketball game, a muscular, red-haired player is shown in a series of intense close-ups, his face contorted with effort and sweat beading on his skin.",
+        "3": "The player then sprints down the orange court, his body a blur of motion against the dark background of the arena.",
+        "5": "Another player in a white uniform is seen running alongside him, highlighting the fast-paced chase."
+      }
+    },
+    {
+      "case": 71,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          5
+        ],
+        [
+          5,
+          9
+        ],
+        [
+          9,
+          15
+        ],
+        [
+          15,
+          21
+        ],
+        [
+          21,
+          27
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "Under a bright blue sky, a large white cruise ship sails across the deep blue ocean.",
+        "3": "He runs along a row of lounge chairs where a line of women in colorful bikinis are sunbathing, all moving in unison with their arms raised.",
+        "5": "The scene is captured with dynamic, low-angle shots that emphasize the man's powerful movements and the festive, high-energy atmosphere of the cruise."
+      }
+    },
+    {
+      "case": 72,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          8
+        ],
+        [
+          8,
+          27
+        ],
+        [
+          27,
+          39
+        ],
+        [
+          39,
+          45
+        ],
+        [
+          45,
+          54
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The scene opens with a close-up of a shocked karate instructor.",
+        "3": "The instructor speaks, and the camera cuts to a close-up of a student who responds with a serious expression.",
+        "5": "The scene concludes with two students standing at attention, ready for what is to come, establishing a tense and formal confrontation."
+      }
+    },
+    {
+      "case": 74,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          18
+        ],
+        [
+          18,
+          31
+        ],
+        [
+          31,
+          44
+        ],
+        [
+          44,
+          60
+        ],
+        [
+          60,
+          69
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "On an overcast day, a group of female students in winter coats walks across a school parking lot.",
+        "3": "The scene cuts to a woman in a black coat standing by a car, then back to a close-up of the girl's face, her expression now showing surprise as she looks off-camera.",
+        "5": "The scene cuts to a woman in a black coat standing by a car, then back to a close-up of the girl's face, her expression now showing surprise as she looks off-camera."
+      }
+    },
+    {
+      "case": 77,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          7
+        ],
+        [
+          7,
+          15
+        ],
+        [
+          15,
+          29
+        ],
+        [
+          29,
+          44
+        ],
+        [
+          44,
+          57
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "Inside a lavishly decorated imperial hall, a middle-aged emperor, dressed in ornate blue and gold robes, reacts with shock and anger.",
+        "3": "The emperor listens with a grave look, his hands resting on his knees.",
+        "5": "The bright, even lighting highlights the rich colors and textures of the historical setting."
+      }
+    },
+    {
+      "case": 78,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          13
+        ],
+        [
+          13,
+          27
+        ],
+        [
+          27,
+          43
+        ],
+        [
+          43,
+          54
+        ],
+        [
+          54,
+          61
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a dimly lit outdoor setting at night, a woman with long dark hair, wearing a shiny brown top, stands with a serious expression.",
+        "3": "The woman in the car, dressed in black with striking red lipstick, looks back and speaks, introducing herself.",
+        "5": "The scene is filled with tension and mystery, highlighted by the dramatic, low-key lighting."
+      }
+    },
+    {
+      "case": 79,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          5
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          10,
+          15
+        ],
+        [
+          15,
+          19
+        ],
+        [
+          19,
+          30
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a dimly lit forest at night, a man in a black robe stands calmly as another man in a red and black robe points a sword at him.",
+        "3": "The man in black remains composed, his expression serious.",
+        "5": "They engage in a fast-paced duel, their robes and hair flying as they clash their blades amidst the chaotic backdrop of the torch-lit battle."
+      }
+    },
+    {
+      "case": 82,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          6
+        ],
+        [
+          6,
+          9
+        ],
+        [
+          9,
+          17
+        ],
+        [
+          17,
+          25
+        ],
+        [
+          25,
+          33
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a dimly lit, futuristic corridor, a grey robot is struck by an unseen force.",
+        "3": "The robot recoils from the impact, its body sparking, before the armored figure turns to aim their weapon at the damaged door, preparing for the next move.",
+        "5": "The robot recoils from the impact, its body sparking, before the armored figure turns to aim their weapon at the damaged door, preparing for the next move."
+      }
+    },
+    {
+      "case": 84,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          7
+        ],
+        [
+          7,
+          21
+        ],
+        [
+          21,
+          33
+        ],
+        [
+          33,
+          44
+        ],
+        [
+          44,
+          57
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a cold, blue-lit bathroom, a woman is pinned to the wall, struggling to escape.",
+        "3": "Her eyes are wide with fear, and her mouth is open in a silent scream.",
+        "5": "The harsh lighting and claustrophobic setting create a deeply unsettling and suspenseful atmosphere, highlighting her panic and helplessness."
+      }
+    },
+    {
+      "case": 86,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          7
+        ],
+        [
+          7,
+          13
+        ],
+        [
+          13,
+          20
+        ],
+        [
+          20,
+          28
+        ],
+        [
+          28,
+          38
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The scene unfolds in a stylish, dimly lit bar with a prominent red brick wall.",
+        "3": "He calls out for a waiter, and the camera cuts to another man in a plaid shirt who responds.",
+        "5": "The first man then stands up, his expression serious and focused as he looks towards the right, creating a tense and expectant atmosphere."
+      }
+    },
+    {
+      "case": 89,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          8
+        ],
+        [
+          8,
+          15
+        ],
+        [
+          15,
+          23
+        ],
+        [
+          23,
+          29
+        ],
+        [
+          29,
+          35
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a vibrant, sun-drenched outdoor market, a young man with a striking red mohawk engages with an elderly vendor.",
+        "3": "The young man, dressed in a studded vest, is first seen at a food stall before moving to a small table where he interacts with the vendor, who is seated.",
+        "5": "The interaction culminates in a friendly handshake, highlighting a moment of connection amidst the chaotic, lively atmosphere of the market."
+      }
+    },
+    {
+      "case": 91,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          19
+        ],
+        [
+          19,
+          36
+        ],
+        [
+          36,
+          40
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a dense, foggy forest, a woman wearing a light blue traditional dress walks along a narrow path.",
+        "3": "The scene is shot from a distance, with tree trunks and leaves partially obscuring the view."
+      }
+    },
+    {
+      "case": 92,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          6
+        ],
+        [
+          6,
+          21
+        ],
+        [
+          21,
+          29
+        ],
+        [
+          29,
+          42
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "At dusk in a palace courtyard, two officials in elaborate dark blue and gold robes stand with serious expressions.",
+        "4": "They then shout a response in unison."
+      }
+    },
+    {
+      "case": 95,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          7
+        ],
+        [
+          7,
+          23
+        ],
+        [
+          23,
+          55
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The scene opens with a tense close-up of a man in a car, speaking urgently on a flip phone.",
+        "3": "The first man continues his call, his face etched with concern."
+      }
+    },
+    {
+      "case": 96,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          8
+        ],
+        [
+          8,
+          14
+        ],
+        [
+          14,
+          27
+        ],
+        [
+          27,
+          37
+        ],
+        [
+          37,
+          48
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a dimly lit, traditional hall, an elderly woman dressed in an opulent fur coat and sequined shawl sits with a stern expression, holding two white eggs.",
+        "5": "Finally, a young woman in a light blue cheongsam and white shawl is shown holding a folded fan, her expression serious and watchful."
+      }
+    },
+    {
+      "case": 99,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          11
+        ],
+        [
+          11,
+          19
+        ],
+        [
+          19,
+          29
+        ],
+        [
+          29,
+          37
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a dimly lit and hazy hospital corridor, a man in a dark coat rushes to a baby crib.",
+        "4": "Nearby, a body in a white gown lies face down on the floor, adding to the mysterious and dangerous atmosphere."
+      }
+    },
+    {
+      "case": 102,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          11
+        ],
+        [
+          11,
+          19
+        ],
+        [
+          19,
+          25
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a cozy, modern living room at night, two women share an intimate moment.",
+        "3": "The woman in pink rests her head on the other's shoulder, smiling with relief."
+      }
+    },
+    {
+      "case": 106,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          12
+        ],
+        [
+          12,
+          23
+        ],
+        [
+          23,
+          33
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a studio, a woman with long dark hair sits on a gray sofa and speaks with a focused expression, gesturing with her hand.",
+        "3": "Finally, a close-up shows a man in a suit looking down with a serious expression as a \"WIN\" graphic appears, indicating he has won a round."
+      }
+    },
+    {
+      "case": 107,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          23
+        ],
+        [
+          23,
+          35
+        ],
+        [
+          35,
+          48
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a dimly lit, formal office, a man in a dark suit sits at a desk, speaking with an assertive expression and gesturing forward.",
+        "3": "The scene then cuts to an intense close-up of a different man with curly hair and a lab coat, his face etched with worry."
+      }
+    },
+    {
+      "case": 109,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          7
+        ],
+        [
+          7,
+          12
+        ],
+        [
+          12,
+          19
+        ],
+        [
+          19,
+          25
+        ],
+        [
+          25,
+          32
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "On a dark, misty body of water at night, several small wooden boats are scattered.",
+        "5": "An explosion erupts on a boat with a red flag, sending sparks and smoke into the air."
+      }
+    },
+    {
+      "case": 110,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          9
+        ],
+        [
+          9,
+          15
+        ],
+        [
+          15,
+          24
+        ],
+        [
+          24,
+          29
+        ],
+        [
+          29,
+          34
+        ]
+      ],
+      "descriptions_by_segment": {
+        "3": "The camera then follows a man as he runs up a stone staircase in a garden area, his movements suggesting urgency.",
+        "5": "The final shot shows the complex, dark structure of the roller coaster's support beams and cables."
+      }
+    },
+    {
+      "case": 114,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          23
+        ],
+        [
+          23,
+          32
+        ],
+        [
+          32,
+          37
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a softly lit traditional Chinese hall, a young man with a sorrowful expression looks down, his eyes glistening.",
+        "3": "The scene then cuts to a low-angle shot of the young man standing, holding a large grey cloth, with the older man standing beside him, creating a sense of formality and tension."
+      }
+    },
+    {
+      "case": 115,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          14
+        ],
+        [
+          14,
+          40
+        ],
+        [
+          40,
+          51
+        ],
+        [
+          51,
+          65
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a studio with a glowing blue wall of equations, a bald man in a brown hoodie speaks thoughtfully.",
+        "4": "The video returns to the bald man, who smiles and laughs while speaking, creating a conversational and engaging atmosphere."
+      }
+    },
+    {
+      "case": 118,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          18
+        ],
+        [
+          18,
+          32
+        ],
+        [
+          32,
+          52
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "Under a bright, clear sky in a vast desert, a group of people celebrates a significant event.",
+        "3": "The camera captures their embrace from different angles, showing their joyful and relieved expressions."
+      }
+    },
+    {
+      "case": 119,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          13
+        ],
+        [
+          13,
+          25
+        ],
+        [
+          25,
+          40
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The scene opens on a quiet urban path where a woman in a pink sweater and a man in a green shirt walk away from the camera.",
+        "3": "She wears a lanyard with a phone and an ID card."
+      }
+    },
+    {
+      "case": 120,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          5
+        ],
+        [
+          5,
+          18
+        ],
+        [
+          18,
+          24
+        ],
+        [
+          24,
+          46
+        ],
+        [
+          46,
+          58
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a fantastical landscape of purple rock spires, an older man with glasses and a purple coat confronts a young man in a blue suit.",
+        "5": "The young man, initially surprised, watches as the orb transforms into a small, hair-like object that he then holds in his hand, examining it with a look of awe."
+      }
+    },
+    {
+      "case": 122,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          6
+        ],
+        [
+          6,
+          15
+        ],
+        [
+          15,
+          26
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The video opens with close-ups on the feet of several young people walking across a brightly lit, polished gymnasium floor.",
+        "3": "In the background, bleachers are packed with a large audience of students and adults, watching the event."
+      }
+    },
+    {
+      "case": 124,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          13
+        ],
+        [
+          13,
+          20
+        ],
+        [
+          20,
+          35
+        ],
+        [
+          35,
+          52
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a cool-toned, modern hallway, a young woman with short hair moves with urgency and anxiety.",
+        "4": "Her face, shown in a close-up, registers pure shock and disbelief as she takes in the scene, her eyes wide and mouth agape."
+      }
+    },
+    {
+      "case": 125,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          8
+        ],
+        [
+          8,
+          23
+        ],
+        [
+          23,
+          38
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "Inside a lavishly decorated room with terracotta floors and white walls, a tense confrontation unfolds.",
+        "3": "The woman stands with a defiant expression, while the man in uniform stands rigidly at attention."
+      }
+    },
+    {
+      "case": 127,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          25
+        ],
+        [
+          25,
+          30
+        ],
+        [
+          30,
+          37
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a dimly lit, modern bar, a woman with her hair in a ponytail sits alone at the counter, pensively sipping red wine.",
+        "3": "Suddenly, her face contorts in rage, and she violently throws her wine glass off-screen."
+      }
+    },
+    {
+      "case": 128,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          8
+        ],
+        [
+          8,
+          15
+        ],
+        [
+          15,
+          24
+        ],
+        [
+          24,
+          30
+        ],
+        [
+          30,
+          37
+        ]
+      ],
+      "descriptions_by_segment": {
+        "3": "In a different setting, the man, now in a yellow sweater, speaks to the woman, who is seen from behind.",
+        "5": "Finally, they are shown in a tight embrace on a bustling city street at night, surrounded by the soft blur of colorful traffic lights, creating a deeply romantic and intimate atmosphere."
+      }
+    },
+    {
+      "case": 139,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          6
+        ],
+        [
+          6,
+          12
+        ],
+        [
+          12,
+          20
+        ],
+        [
+          20,
+          28
+        ],
+        [
+          28,
+          36
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a dimly lit, traditional Chinese waterside village at night, a man with a cut on his face screams in terror as he is restrained.",
+        "3": "A group of onlookers, including a man in a blue robe and a woman in a suit, react with shock and panic.",
+        "5": "The scene is illuminated by the warm glow of hanging lanterns, which reflect on the water's surface, creating a tense and dramatic atmosphere."
+      }
+    },
+    {
+      "case": 140,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          9
+        ],
+        [
+          9,
+          15
+        ],
+        [
+          15,
+          33
+        ],
+        [
+          33,
+          48
+        ],
+        [
+          48,
+          61
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The video opens with a close-up of a Ford logo on a white car.",
+        "3": "The scene shifts to an exterior shot of the white Ford Sierra RS Cosworth speeding along a rural road lined with trees.",
+        "5": "The final shot shows him from the front, speaking with a wide, expressive smile, capturing the joy of driving in a scenic countryside setting under bright sunlight."
+      }
+    },
+    {
+      "case": 141,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          8
+        ],
+        [
+          8,
+          14
+        ],
+        [
+          14,
+          20
+        ],
+        [
+          20,
+          32
+        ],
+        [
+          32,
+          46
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "On a modern wooden deck overlooking a lake, a woman in a green dress argues animatedly, gesturing emphatically.",
+        "3": "The scene cuts to a man in a maroon shirt on a lawn, who appears to be playing a game.",
+        "5": "The final shot reveals a wider view of the group on the deck, with the two women continuing their confrontation while others look on, creating a tense social gathering."
+      }
+    },
+    {
+      "case": 147,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          10
+        ],
+        [
+          10,
+          18
+        ],
+        [
+          18,
+          33
+        ],
+        [
+          33,
+          43
+        ],
+        [
+          43,
+          49
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a brightly lit, modern living room, a man and a young boy share a warm hug on the floor.",
+        "3": "The man then puts on a brown apron and walks away, followed by the boy and another small child who runs ahead excitedly.",
+        "5": "The room is decorated with a large grey sofa, potted plants, and abstract art, creating a cozy and contemporary family setting."
+      }
+    },
+    {
+      "case": 150,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          8
+        ],
+        [
+          8,
+          22
+        ],
+        [
+          22,
+          28
+        ],
+        [
+          28,
+          38
+        ],
+        [
+          38,
+          46
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a traditionally decorated room, a middle-aged woman in a floral cheongsam furiously shouts and gestures at a stoic man in a grey tunic.",
+        "3": "The scene cuts to a younger woman in a newsboy cap, who observes the confrontation with a grave look on her face.",
+        "5": "The warm, soft lighting contrasts with the intense emotional conflict unfolding between the characters."
+      }
+    },
+    {
+      "case": 155,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          21
+        ],
+        [
+          21,
+          29
+        ],
+        [
+          29,
+          35
+        ],
+        [
+          35,
+          43
+        ],
+        [
+          43,
+          53
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a warmly lit, modern living room, a woman with long blonde hair sits on a sofa, holding a white mug and speaking animatedly.",
+        "3": "The man, with a mustache, has his arm around the woman in green, and they both smile as they listen.",
+        "5": "The scene is filled with soft light from lamps and candles, creating an intimate and friendly atmosphere as they engage in conversation."
+      }
+    },
+    {
+      "case": 161,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          8
+        ],
+        [
+          8,
+          20
+        ],
+        [
+          20,
+          59
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "A man dressed as a chef joyfully waves from behind a guardrail at a racetrack.",
+        "3": "The chef then raises a Polaroid camera, takes a picture, and proudly displays the developing photo with a wide smile, capturing a moment of pure happiness."
+      }
+    },
+    {
+      "case": 166,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          9
+        ],
+        [
+          9,
+          23
+        ],
+        [
+          23,
+          28
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The scene opens on a burning wooden building at night, with flames flickering in the foreground.",
+        "3": "The final shot shows a man in a white shirt running urgently through a narrow stone alleyway, viewed from a low angle."
+      }
+    },
+    {
+      "case": 169,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          14
+        ],
+        [
+          14,
+          30
+        ],
+        [
+          30,
+          45
+        ],
+        [
+          45,
+          53
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "A young man in traditional Chinese robes sits in a courtyard, looking downcast while holding a cooked chicken.",
+        "4": "Finally, in a wider shot, he is seen running out of the inn's courtyard, shouting as he moves past other patrons and a large wooden carriage."
+      }
+    },
+    {
+      "case": 171,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          7
+        ],
+        [
+          7,
+          14
+        ],
+        [
+          14,
+          18
+        ],
+        [
+          18,
+          29
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a dimly lit room, a smartphone on a dark table begins to ring.",
+        "4": "Her hands hold the device as she hesitates before swiping to answer the call, her thumb moving over the screen."
+      }
+    },
+    {
+      "case": 177,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          9
+        ],
+        [
+          9,
+          28
+        ],
+        [
+          28,
+          34
+        ],
+        [
+          34,
+          44
+        ],
+        [
+          44,
+          54
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "Inside a brightly lit, ornately decorated event hall, a young man with a ponytail looks on in shock.",
+        "5": "The young man then shouts defiantly, escalating the confrontation."
+      }
+    },
+    {
+      "case": 179,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          17
+        ],
+        [
+          17,
+          29
+        ],
+        [
+          29,
+          36
+        ],
+        [
+          36,
+          42
+        ],
+        [
+          42,
+          57
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a lush, tropical setting, a group of contestants dressed in athletic gear and life vests are gathered on a sandy shore.",
+        "3": "The scene cuts to two women standing on a floating platform in the middle of a wide river, facing each other."
+      }
+    },
+    {
+      "case": 180,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          13
+        ],
+        [
+          13,
+          25
+        ],
+        [
+          25,
+          44
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a dimly lit traditional Chinese courtyard at night, an elderly man in a wheelchair is the center of attention.",
+        "3": "The scene is illuminated by the warm glow of yellow lanterns, casting long shadows and creating a tense, dramatic atmosphere."
+      }
+    },
+    {
+      "case": 183,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          9
+        ],
+        [
+          9,
+          24
+        ],
+        [
+          24,
+          28
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a dimly lit office with a cool cyan glow, a man stares intently at his computer screen, which displays a colorful cartoon.",
+        "3": "The scene then cuts to a close-up of his hands as he types on a white keyboard, with a branded mug sitting on the desk beside him."
+      }
+    },
+    {
+      "case": 184,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          12
+        ],
+        [
+          12,
+          22
+        ],
+        [
+          22,
+          62
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a forest setting with a ground covered in leaves, a man in a black cap and jacket is shown in a close-up, looking down intently.",
+        "3": "The view returns to the first man, who slowly looks up, his expression shifting from neutral to a confident, knowing smile as the camera slowly pushes in on his face."
+      }
+    },
+    {
+      "case": 185,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          6
+        ],
+        [
+          6,
+          42
+        ],
+        [
+          42,
+          53
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The scene opens on a quiet Japanese street corner with a traffic light.",
+        "3": "The final shot shows a blonde girl in a maid outfit with horns, looking utterly exasperated with her eyes closed and a vein pulsing on her temple, set against a dark, stylized background."
+      }
+    },
+    {
+      "case": 192,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          13
+        ],
+        [
+          13,
+          32
+        ],
+        [
+          32,
+          40
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "Under the cold, dim light of a night sky, a large group of people walks slowly and deliberately across a grassy field.",
+        "3": "One woman, with her hair in pigtails, turns and runs towards a car as the other, in a striped shirt, holds her hand."
+      }
+    },
+    {
+      "case": 197,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          20
+        ],
+        [
+          20,
+          52
+        ],
+        [
+          52,
+          55
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a brightly lit, modern conference room, a woman with her hair in a ponytail speaks with great animation.",
+        "3": "The scene cuts between a close-up of her expressive face and a wider shot of the entire meeting, showing the other participants listening intently."
+      }
+    },
+    {
+      "case": 200,
+      "task_type": "v2v",
+      "shot_spans": [
+        [
+          0,
+          10
+        ],
+        [
+          10,
+          17
+        ],
+        [
+          17,
+          21
+        ],
+        [
+          21,
+          26
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a dimly lit house, a woman with long brown hair wearing a blue jacket and gloves speaks urgently while a man with a beard watches from a doorway.",
+        "4": "The atmosphere is tense and mysterious, with cool, high-contrast lighting suggesting an investigation or a suspenseful event."
+      }
+    },
+    {
+      "case": 202,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          12
+        ],
+        [
+          12,
+          20
+        ],
+        [
+          20,
+          26
+        ],
+        [
+          26,
+          33
+        ],
+        [
+          33,
+          39
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "On a bright, sunny day in a large park, a host in a puffer jacket stands behind a table with medals, addressing the camera.",
+        "3": "One team wears purple hoodies, another wears yellow shirts and trucker hats, a third wears black t-shirts, and a fourth wears yellow aprons and beanies.",
+        "5": "The background features a grassy hill and a distant city skyline."
+      }
+    },
+    {
+      "case": 204,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          13
+        ],
+        [
+          13,
+          25
+        ],
+        [
+          25,
+          36
+        ],
+        [
+          36,
+          48
+        ],
+        [
+          48,
+          61
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The video opens with a high-angle aerial shot of a rural courtyard where a massive red lantern is being assembled.",
+        "3": "The camera then moves closer, offering a view from within the lantern's skeletal frame, highlighting its immense scale.",
+        "5": "Another close-up reveals a bamboo pole marked with black characters, emphasizing the precision of the craft."
+      }
+    },
+    {
+      "case": 206,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          10
+        ],
+        [
+          10,
+          22
+        ],
+        [
+          22,
+          28
+        ],
+        [
+          28,
+          43
+        ],
+        [
+          43,
+          55
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "Inside a modern elevator with metallic walls, a man in a tan suit and a woman in a white lace dress engage in a tense verbal exchange.",
+        "3": "The scene is shot with close-ups that heighten the emotional drama.",
+        "5": "The confrontation culminates with the woman turning and walking away, leaving the man looking on in surprise."
+      }
+    },
+    {
+      "case": 211,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          13
+        ],
+        [
+          13,
+          18
+        ],
+        [
+          18,
+          28
+        ],
+        [
+          28,
+          42
+        ],
+        [
+          42,
+          49
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "A middle-aged hotel maid in a uniform speaks politely to a man and a woman sitting in a well-appointed room.",
+        "3": "She then returns to the door, closes it, and proceeds to forcefully pry it open, suggesting an urgent or suspicious situation.",
+        "5": "She then returns to the door, closes it, and proceeds to forcefully pry it open, suggesting an urgent or suspicious situation."
+      }
+    },
+    {
+      "case": 212,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          14
+        ],
+        [
+          14,
+          27
+        ],
+        [
+          27,
+          36
+        ],
+        [
+          36,
+          42
+        ],
+        [
+          42,
+          51
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a sunlit garden, a young girl sits at a dining table with a slice of cake.",
+        "3": "The scene cuts to a wider view of a family gathering, where the woman rushes to the girl's side.",
+        "5": "Another woman, dressed in a beige suit, watches the interaction with a calm, knowing expression, creating a palpable tension among the group."
+      }
+    },
+    {
+      "case": 213,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          10
+        ],
+        [
+          10,
+          26
+        ],
+        [
+          26,
+          40
+        ],
+        [
+          40,
+          50
+        ],
+        [
+          50,
+          60
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a dimly lit, crowded ballroom, a man in a vest and glasses speaks into a vintage microphone, hyping up the crowd.",
+        "3": "The audience cheers enthusiastically, with one woman raising her arm in excitement.",
+        "5": "The dance floor is a whirlwind of motion, with couples spinning and moving to the music under warm, hazy spotlights."
+      }
+    },
+    {
+      "case": 214,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          11
+        ],
+        [
+          11,
+          20
+        ],
+        [
+          20,
+          26
+        ],
+        [
+          26,
+          47
+        ],
+        [
+          47,
+          60
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In an outdoor schoolyard under a gray sky, three young women in vibrant, frilly idol-like costumes run forward with determined expressions.",
+        "3": "The man smirks as he holds a small purple box, taunting them.",
+        "5": "The scene is filled with tension as the confrontation unfolds."
+      }
+    },
+    {
+      "case": 216,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          9
+        ],
+        [
+          9,
+          24
+        ],
+        [
+          24,
+          43
+        ],
+        [
+          43,
+          55
+        ],
+        [
+          55,
+          61
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a brightly lit, sparsely furnished room, a man in a striped shirt and a woman in a white cardigan stand facing each other, engaged in a serious discussion.",
+        "3": "The flat, cool lighting from the ceiling panels enhances the tense and dramatic atmosphere of their exchange.",
+        "5": "The flat, cool lighting from the ceiling panels enhances the tense and dramatic atmosphere of their exchange."
+      }
+    },
+    {
+      "case": 219,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          6
+        ],
+        [
+          6,
+          24
+        ],
+        [
+          24,
+          35
+        ],
+        [
+          35,
+          44
+        ],
+        [
+          44,
+          53
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a softly lit, purple-hued room, a woman in a traditional blue-and-white top holds a man's hand, her expression filled with wonder.",
+        "5": "The woman then looks up at him, her face filled with dawning realization and affection, as a warm glow emanates from their hands."
+      }
+    },
+    {
+      "case": 221,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          18
+        ],
+        [
+          18,
+          40
+        ],
+        [
+          40,
+          60
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a dimly lit forest at night, a middle-aged soldier wearing a helmet with a net stands alert.",
+        "3": "He raises his hand to his mouth, then points his index finger upwards, holding the gesture with intense focus."
+      }
+    },
+    {
+      "case": 225,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          32
+        ],
+        [
+          32,
+          47
+        ],
+        [
+          47,
+          57
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a warmly lit classroom, a Caucasian professor with a mustache and glasses speaks to the camera.",
+        "3": "The professor then reappears, continuing the dialogue with an inquisitive look."
+      }
+    },
+    {
+      "case": 226,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          10
+        ],
+        [
+          10,
+          32
+        ],
+        [
+          32,
+          44
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "Inside an airplane's galley, a man in a green vest frantically tries to open a door.",
+        "3": "The man in the green vest then turns, looking startled, and speaks urgently to someone off-camera."
+      }
+    },
+    {
+      "case": 227,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          11
+        ],
+        [
+          11,
+          23
+        ],
+        [
+          23,
+          32
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The scene opens with a close-up of a smartphone during a video call, which is then ended.",
+        "3": "Finally, the woman, now wearing a silver mask and a black suit, stands outdoors and touches her mask, creating a mysterious and tense atmosphere under bright daylight."
+      }
+    },
+    {
+      "case": 230,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          19
+        ],
+        [
+          19,
+          31
+        ],
+        [
+          31,
+          45
+        ],
+        [
+          45,
+          53
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "An animated brown dog in an orange helmet and uniform sits in his hovercraft, speaking confidently against a bright blue sky.",
+        "4": "The whale surfaces, revealing two small animal friends, a squirrel and a rabbit, who are hanging from baskets in the air."
+      }
+    },
+    {
+      "case": 232,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          14
+        ],
+        [
+          14,
+          23
+        ],
+        [
+          23,
+          56
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a warmly lit bedroom, a young woman with her hair up is initially focused on a task.",
+        "3": "Returning to her face, she looks up from her work, her expression shifting to one of deep thought as she gazes off-screen."
+      }
+    },
+    {
+      "case": 233,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          33
+        ],
+        [
+          33,
+          41
+        ],
+        [
+          41,
+          53
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a sterile, futuristic command center, a man with brown hair sits with a stern expression.",
+        "3": "The scene then cuts to a monitor displaying a young pilot in a cockpit, followed by a close-up of another pilot in a red helmet, both with determined looks."
+      }
+    },
+    {
+      "case": 235,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          8
+        ],
+        [
+          8,
+          21
+        ],
+        [
+          21,
+          40
+        ],
+        [
+          40,
+          48
+        ],
+        [
+          48,
+          54
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a bleak, snowy village courtyard, a middle-aged man in tattered clothes argues with a woman in a striped jacket.",
+        "5": "The cold, diffuse lighting and desaturated colors enhance the tense and somber mood of the interaction."
+      }
+    },
+    {
+      "case": 237,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          21
+        ],
+        [
+          21,
+          40
+        ],
+        [
+          40,
+          54
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a warmly lit, cluttered artist's studio, a young man in a blue shirt confronts a woman in a plaid shirt.",
+        "3": "The woman, looking flustered, responds defensively."
+      }
+    },
+    {
+      "case": 238,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          17
+        ],
+        [
+          17,
+          22
+        ],
+        [
+          22,
+          31
+        ],
+        [
+          31,
+          40
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a brightly lit gymnastics hall, a young female gymnast with her hair in a bun practices on a balance beam.",
+        "4": "A wide shot shows her executing a fluid back handspring, silhouetted against large windows that reveal a green forest outside."
+      }
+    },
+    {
+      "case": 239,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          11
+        ],
+        [
+          11,
+          21
+        ],
+        [
+          21,
+          42
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a softly lit, traditional hall, a man with dark hair in a blue robe speaks with a serious expression.",
+        "3": "Finally, the camera focuses on a man with striking white hair and eyebrows, who listens with a stern and focused gaze, his face illuminated against a backdrop of warm and cool lights."
+      }
+    },
+    {
+      "case": 241,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          8
+        ],
+        [
+          8,
+          20
+        ],
+        [
+          20,
+          29
+        ],
+        [
+          29,
+          41
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a dark, claustrophobic mechanical interior, a woman in a black tactical suit urgently manipulates wiring and components.",
+        "4": "The sequence ends with an extreme close-up of a digital display on a textured surface, showing a rapidly depleting power meter, heightening the sense of crisis."
+      }
+    },
+    {
+      "case": 242,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          10
+        ],
+        [
+          10,
+          19
+        ],
+        [
+          19,
+          29
+        ],
+        [
+          29,
+          39
+        ],
+        [
+          39,
+          54
+        ]
+      ],
+      "descriptions_by_segment": {
+        "3": "At the bar, a man and a woman are seated.",
+        "5": "The atmosphere is warm and social, with the soft glow of ambient lighting highlighting the textures of the food and the expressions of the diners."
+      }
+    },
+    {
+      "case": 248,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          6
+        ],
+        [
+          6,
+          11
+        ],
+        [
+          11,
+          18
+        ],
+        [
+          18,
+          24
+        ],
+        [
+          24,
+          30
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The scene opens with a chaotic overhead view of two men fighting violently in a dimly lit room, their shadows cast long and stark on the floor.",
+        "3": "The perspective shifts to the passenger's view, showing the driver's focused expression in the rearview mirror as they navigate a highway.",
+        "5": "The clip ends on a tense close-up of the younger man's face, his expression grim and determined."
+      }
+    },
+    {
+      "case": 251,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          18
+        ],
+        [
+          18,
+          24
+        ],
+        [
+          24,
+          30
+        ],
+        [
+          30,
+          53
+        ],
+        [
+          53,
+          66
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In an overcast parking lot, a man with long hair runs urgently while holding a phone that begins to glow with intense white light.",
+        "3": "The scene culminates with the man being engulfed in a blinding flash of light next to a black car, after which he appears in a dark space, looking up in awe.",
+        "5": "The scene culminates with the man being engulfed in a blinding flash of light next to a black car, after which he appears in a dark space, looking up in awe."
+      }
+    },
+    {
+      "case": 252,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          18
+        ],
+        [
+          18,
+          32
+        ],
+        [
+          32,
+          40
+        ],
+        [
+          40,
+          50
+        ],
+        [
+          50,
+          58
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a quiet, dense forest with soft, diffused light, a young man walks with a sense of urgency.",
+        "3": "He stops, looking around with a worried and searching expression, his gaze sweeping across the woods.",
+        "5": "The scene is shot with a shallow depth of field, blurring the lush green foliage and creating a pensive, mysterious atmosphere."
+      }
+    },
+    {
+      "case": 253,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          14
+        ],
+        [
+          14,
+          23
+        ],
+        [
+          23,
+          28
+        ],
+        [
+          28,
+          40
+        ],
+        [
+          40,
+          49
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The video opens with a split-screen view.",
+        "3": "On the right, a person in a suit is seen from above, examining a large, hand-drawn flowchart on a desk.",
+        "5": "Subsequent shots show a close-up of a man in a white shirt, a close-up of text on a screen, and a final split-screen of a man smoking on the left and another man sitting on a bed with a laptop on the right."
+      }
+    },
+    {
+      "case": 256,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          8
+        ],
+        [
+          8,
+          15
+        ],
+        [
+          15,
+          24
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          40,
+          57
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The scene opens with a man in a cockpit, his face illuminated by colorful lights, expressing panic.",
+        "3": "They look up as a large, green spaceship lies crashed nearby.",
+        "5": "A red and white robot emerges from the ship, flies off, and hovers menacingly, creating a tense standoff."
+      }
+    },
+    {
+      "case": 257,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          9
+        ],
+        [
+          9,
+          18
+        ],
+        [
+          18,
+          27
+        ],
+        [
+          27,
+          37
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a cool-toned office, a woman with dark hair tied back looks down with a worried expression.",
+        "4": "Her face is illuminated by a strong light, and swirling golden particles of light float around her, creating a magical and intense atmosphere."
+      }
+    },
+    {
+      "case": 258,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          18
+        ],
+        [
+          18,
+          41
+        ],
+        [
+          41,
+          52
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a lush green garden, a young woman with long brown hair, dressed in a white gown, is shown in a pensive close-up.",
+        "3": "The younger woman looks up at the older one, her expression shifting to a gentle smile as they speak."
+      }
+    },
+    {
+      "case": 260,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          9
+        ],
+        [
+          9,
+          29
+        ],
+        [
+          29,
+          41
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "Under the harsh desert sun, a scene of chaos unfolds.",
+        "3": "Nearby, another man lies injured on the dusty ground, his face contorted in pain as he breathes heavily."
+      }
+    },
+    {
+      "case": 262,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          15
+        ],
+        [
+          15,
+          25
+        ],
+        [
+          25,
+          35
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The scene opens on a wide view of a luxurious, modern living room where a man in a brown suit sits on a large grey sofa, speaking with urgency.",
+        "3": "The camera then cuts to a close-up of the man in the suit as he continues his command, his expression intense."
+      }
+    },
+    {
+      "case": 267,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          9
+        ],
+        [
+          9,
+          23
+        ],
+        [
+          23,
+          34
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The scene unfolds in a dimly lit, rustic wooden structure at night, creating a tense atmosphere.",
+        "3": "One man in a brown jacket holds a submachine gun, his face taut with concentration."
+      }
+    },
+    {
+      "case": 269,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          14
+        ],
+        [
+          14,
+          21
+        ],
+        [
+          21,
+          42
+        ],
+        [
+          42,
+          58
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a brightly lit children's classroom, a group of five women are gathered in a tense discussion.",
+        "4": "The scene is filled with colorful decorations and bookshelves, contrasting with the serious nature of their conversation."
+      }
+    },
+    {
+      "case": 270,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          22
+        ],
+        [
+          22,
+          38
+        ],
+        [
+          38,
+          55
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "Under a clear blue sky, a man runs urgently up a steep, rocky hillside dotted with sparse, dry vegetation.",
+        "3": "He slows to a stop, standing at the crest of the hill."
+      }
+    },
+    {
+      "case": 273,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          18
+        ],
+        [
+          18,
+          36
+        ],
+        [
+          36,
+          45
+        ],
+        [
+          45,
+          54
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a dusty, earthen courtyard under bright, diffuse daylight, a large assembly of soldiers in grey uniforms and a few civilians are gathered for a serious meeting.",
+        "4": "The camera then pulls back to a high-angle wide shot, showing the entire assembly, with red flags fluttering in the background, reinforcing the solemn and disciplined atmosphere of the gathering."
+      }
+    },
+    {
+      "case": 278,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          12
+        ],
+        [
+          12,
+          22
+        ],
+        [
+          22,
+          34
+        ],
+        [
+          34,
+          42
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a lush green park, a woman with long dark hair, dressed in a striking purple satin blouse, holds a man's hand.",
+        "4": "The scene cuts between their faces, highlighting the tension and the emotional exchange between them as they converse."
+      }
+    },
+    {
+      "case": 281,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          9
+        ],
+        [
+          9,
+          27
+        ],
+        [
+          27,
+          50
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "Under the intense golden sunlight, a group of shirtless young men are gathered on a vast, flat rock formation by the ocean.",
+        "3": "Other members of the group sit around, watching and shouting encouragement."
+      }
+    },
+    {
+      "case": 282,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          12
+        ],
+        [
+          12,
+          28
+        ],
+        [
+          28,
+          32
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The video opens in a dark room where a person's hands are seen typing on a keyboard, with a blue screen displaying text.",
+        "3": "Finally, the video transitions to a medium shot of a woman sitting at a table in a lively, dimly lit bar, surrounded by other patrons and neon lights, as she watches something off-screen."
+      }
+    },
+    {
+      "case": 283,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          12
+        ],
+        [
+          12,
+          28
+        ],
+        [
+          28,
+          50
+        ],
+        [
+          50,
+          55
+        ],
+        [
+          55,
+          62
+        ]
+      ],
+      "descriptions_by_segment": {
+        "3": "The perspective shifts to a group of Chinese soldiers lying prone in the grass, watching a distant firefight involving Japanese troops and a military truck.",
+        "5": "The scene is filled with the sounds of gunfire and the tense atmosphere of combat."
+      }
+    },
+    {
+      "case": 287,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          17
+        ],
+        [
+          17,
+          30
+        ],
+        [
+          30,
+          47
+        ],
+        [
+          47,
+          56
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a dimly lit, high-tech control room, a woman with dark hair stares intently at a screen, her face illuminated by its cool glow.",
+        "4": "Then, an older man with glasses, wearing a headset in a dark room, gives a command."
+      }
+    },
+    {
+      "case": 289,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          7
+        ],
+        [
+          7,
+          14
+        ],
+        [
+          14,
+          22
+        ],
+        [
+          22,
+          39
+        ],
+        [
+          39,
+          47
+        ]
+      ],
+      "descriptions_by_segment": {
+        "3": "An African American woman in a magenta top listens intently, her expression shifting from pensive to concerned.",
+        "5": "The scene is captured with dramatic lighting that emphasizes their emotional states."
+      }
+    },
+    {
+      "case": 293,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          19
+        ],
+        [
+          19,
+          28
+        ],
+        [
+          28,
+          47
+        ],
+        [
+          47,
+          62
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a cavernous, mist-filled hall of ancient stone pillars, a long, serpentine dragon with dark scales and a purple mane flies gracefully.",
+        "4": "It approaches a central, ornate pillar, and a brilliant purple energy erupts from its top, illuminating the darkness with a powerful magical glow."
+      }
+    },
+    {
+      "case": 299,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          24
+        ],
+        [
+          24,
+          38
+        ],
+        [
+          38,
+          50
+        ],
+        [
+          50,
+          61
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a chaotic sky of swirling orange clouds, an armored warrior flies towards a brilliant energy vortex.",
+        "4": "The scene culminates in an extreme close-up of a fiery, lightning-charged energy sphere, followed by the warrior being thrown back by the force of the attack."
+      }
+    },
+    {
+      "case": 300,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          15
+        ],
+        [
+          15,
+          26
+        ],
+        [
+          26,
+          44
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "On a bright, sunny day at an airport, a man in a dark suit and glasses urgently exits a building.",
+        "3": "The aircraft's powerful engines create a blast of air and smoke, and the man is thrown back by the force."
+      }
+    },
+    {
+      "case": 304,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          13
+        ],
+        [
+          13,
+          36
+        ],
+        [
+          36,
+          55
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "在纯黑的背景下，一名身穿淡蓝色蕾丝古装的女子被强烈的冷光照亮。她的表情经历了从悲伤、痛苦到坚定、决绝的复杂变化。她的眼神时而迷茫，时而锐利，嘴唇微动，似乎在诉说着一个沉重而宿命的故事，整个画面充满了戏剧张力和神秘感。",
+        "3": "在纯黑的背景下，一名身穿淡蓝色蕾丝古装的女子被强烈的冷光照亮。她的表情经历了从悲伤、痛苦到坚定、决绝的复杂变化。她的眼神时而迷茫，时而锐利，嘴唇微动，似乎在诉说着一个沉重而宿命的故事，整个画面充满了戏剧张力和神秘感。"
+      }
+    },
+    {
+      "case": 305,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          29
+        ],
+        [
+          29,
+          47
+        ],
+        [
+          47,
+          58
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The scene opens in a dimly lit, vintage-style office where a woman with her arms crossed watches a man speak.",
+        "3": "The scene then cuts to a bright, hazy train station platform where a man in a suit walks purposefully through the crowd."
+      }
+    },
+    {
+      "case": 306,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          26
+        ],
+        [
+          26,
+          33
+        ],
+        [
+          33,
+          45
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a sunlit traditional Chinese courtyard, a group of ninjas dressed in black with their faces obscured run urgently through the wooden architecture.",
+        "3": "They are pursued by a group of guards in blue uniforms who run in hot pursuit, shouting commands."
+      }
+    },
+    {
+      "case": 307,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          8
+        ],
+        [
+          8,
+          23
+        ],
+        [
+          23,
+          38
+        ],
+        [
+          38,
+          54
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a sun-drenched prison yard, a group of inmates erupts in celebration.",
+        "4": "The camera then cuts to a man with long hair who is laughing and talking animatedly with a friend in a black beanie."
+      }
+    },
+    {
+      "case": 312,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          10
+        ],
+        [
+          10,
+          18
+        ],
+        [
+          18,
+          30
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The video presents a series of close-ups on documents related to a missing child case.",
+        "3": "Finally, it reveals a collage of articles, including one about a Bigfoot kidnapping rumor, suggesting a complex and unsettling investigation."
+      }
+    },
+    {
+      "case": 314,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          10
+        ],
+        [
+          10,
+          21
+        ],
+        [
+          21,
+          30
+        ],
+        [
+          30,
+          51
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a tense outdoor confrontation, a distraught woman with dark hair, her face smudged and her lip bleeding, points a handgun at a frightened blonde woman.",
+        "4": "The scene is set against a weathered white wooden barn under harsh sunlight, which casts long shadows and heightens the dramatic tension of the standoff."
+      }
+    },
+    {
+      "case": 317,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          9
+        ],
+        [
+          9,
+          18
+        ],
+        [
+          18,
+          26
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The video opens on a close-up of a faded, sepia-toned photograph of a young boy, its face obscured by a scribbled-out patch.",
+        "3": "The camera then shifts to an extreme close-up of the aged, textured paper itself, revealing its creases and a dark stain."
+      }
+    },
+    {
+      "case": 322,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          8
+        ],
+        [
+          8,
+          31
+        ],
+        [
+          31,
+          47
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a softly lit, warm-toned room, a young woman with reddish-brown hair appears pensive and sad.",
+        "3": "He opens it, and the camera focuses on the watch's interior, revealing a cherished photograph of a couple standing outdoors with a dog."
+      }
+    },
+    {
+      "case": 328,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          12
+        ],
+        [
+          12,
+          39
+        ],
+        [
+          39,
+          47
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "A woman with blonde-highlighted hair sits in a brightly lit living room, speaking during an interview.",
+        "3": "The lighting is stark and dramatic."
+      }
+    },
+    {
+      "case": 334,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          21
+        ],
+        [
+          21,
+          43
+        ],
+        [
+          43,
+          49
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a dimly lit, cluttered kitchen, a woman in a pink dress stands with her back to the camera.",
+        "3": "The lighting is dramatic, casting deep shadows."
+      }
+    },
+    {
+      "case": 336,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          5
+        ],
+        [
+          5,
+          32
+        ],
+        [
+          32,
+          36
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The scene opens on a tray of gleaming surgical instruments.",
+        "3": "Another person's hands enter the frame to adjust his protective eyewear."
+      }
+    },
+    {
+      "case": 337,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          11
+        ],
+        [
+          11,
+          25
+        ],
+        [
+          25,
+          40
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "On a sun-drenched Parisian rooftop, two women share a tender moment.",
+        "3": "The scene then cuts to a close-up of the blonde woman's face, her eyes closed in bliss as she is held."
+      }
+    },
+    {
+      "case": 338,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          16
+        ],
+        [
+          16,
+          25
+        ],
+        [
+          25,
+          29
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a warmly lit, traditional room at night, a close-up reveals an East Asian woman with a tearful, distressed expression.",
+        "3": "She speaks to him, then abruptly stands up and moves away with a look of shock."
+      }
+    },
+    {
+      "case": 340,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          11
+        ],
+        [
+          11,
+          25
+        ],
+        [
+          25,
+          40
+        ],
+        [
+          40,
+          46
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The scene opens on a close-up of a man in traditional armor, blood dripping from his mouth as he speaks with a pained expression.",
+        "4": "The final shot shows the fight from a distance, with the camera shaking violently, suggesting a powerful impact."
+      }
+    },
+    {
+      "case": 342,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          9
+        ],
+        [
+          9,
+          22
+        ],
+        [
+          22,
+          29
+        ]
+      ],
+      "descriptions_by_segment": {
+        "3": "A silhouetted figure in a suit stands before a large, colorful stained-glass window, raising a hammer to strike it."
+      }
+    },
+    {
+      "case": 344,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          8
+        ],
+        [
+          8,
+          27
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The scene opens with a close-up of a cartoon hand holding a bone-shaped object against a vibrant, radiating background of blue and yellow."
+      }
+    },
+    {
+      "case": 346,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          23
+        ],
+        [
+          23,
+          32
+        ],
+        [
+          32,
+          38
+        ],
+        [
+          38,
+          50
+        ],
+        [
+          50,
+          60
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The scene unfolds in a formal conference room where several students and adults are seated around a large wooden table."
+      }
+    },
+    {
+      "case": 347,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          14
+        ],
+        [
+          14,
+          28
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a softly lit, traditional room, a person's hands carefully wrap a red string around a small potted plant with white pebbles."
+      }
+    },
+    {
+      "case": 348,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          10
+        ],
+        [
+          10,
+          21
+        ],
+        [
+          21,
+          27
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a warmly lit concert hall, a bald conductor in a formal tuxedo passionately leads an orchestra, his movements precise and expressive."
+      }
+    },
+    {
+      "case": 350,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          12
+        ],
+        [
+          12,
+          29
+        ],
+        [
+          29,
+          51
+        ]
+      ],
+      "descriptions_by_segment": {
+        "3": "The final shot reveals the two men are inside the home, with the elderly man standing in the doorway, his face a mask of shock and fear as he listens to the man in the suit."
+      }
+    },
+    {
+      "case": 356,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          25
+        ],
+        [
+          25,
+          62
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a dimly lit room, a middle-aged East Asian man appears deeply troubled."
+      }
+    },
+    {
+      "case": 357,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          8
+        ],
+        [
+          8,
+          25
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a packed football stadium under bright daylight, a player in a maroon and white uniform is on the ground, holding his leg."
+      }
+    },
+    {
+      "case": 360,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          8
+        ],
+        [
+          8,
+          26
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "Under the bright sun, a woman with wet hair and a shocked expression stands in a coastal village."
+      }
+    },
+    {
+      "case": 366,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          30
+        ],
+        [
+          30,
+          54
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a brightly lit living room, a man in a purple and turquoise striped polo shirt sits in a wicker chair, speaking with a thoughtful expression."
+      }
+    },
+    {
+      "case": 367,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          5
+        ],
+        [
+          5,
+          23
+        ],
+        [
+          23,
+          29
+        ],
+        [
+          29,
+          35
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The scene opens with a close-up of a man's finger pointing at his temple."
+      }
+    },
+    {
+      "case": 369,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          18
+        ],
+        [
+          18,
+          30
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The scene opens with an intense close-up of a blonde anime character shouting with a determined expression in a dark stadium, illuminated by bright lights."
+      }
+    },
+    {
+      "case": 378,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          9
+        ],
+        [
+          9,
+          28
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a dimly lit, purple-hued hall, a woman with striking magenta hair and red eyes stares intently."
+      }
+    },
+    {
+      "case": 386,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          12
+        ],
+        [
+          12,
+          21
+        ],
+        [
+          21,
+          33
+        ],
+        [
+          33,
+          57
+        ]
+      ],
+      "descriptions_by_segment": {
+        "4": "The atmosphere is quiet and focused, highlighting the artistry of calligraphy."
+      }
+    },
+    {
+      "case": 388,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          17
+        ],
+        [
+          17,
+          40
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a warmly lit doctor's office, a woman with long dark hair sits with her young daughter on her lap, speaking with a concerned expression to a male doctor."
+      }
+    },
+    {
+      "case": 389,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          9
+        ],
+        [
+          9,
+          25
+        ],
+        [
+          25,
+          39
+        ],
+        [
+          39,
+          53
+        ]
+      ],
+      "descriptions_by_segment": {
+        "4": "The camera then focuses on the merchandise, including a photo book and a pink pearl necklace."
+      }
+    },
+    {
+      "case": 391,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          14
+        ],
+        [
+          14,
+          23
+        ],
+        [
+          23,
+          38
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a dimly lit forest at night, a woman is brutally impaled by a spear."
+      }
+    },
+    {
+      "case": 392,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          23
+        ],
+        [
+          23,
+          40
+        ],
+        [
+          40,
+          52
+        ]
+      ],
+      "descriptions_by_segment": {
+        "3": "The camera then cuts to an extreme close-up of a serious East Asian man, his face filled with intensity."
+      }
+    },
+    {
+      "case": 394,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          14
+        ],
+        [
+          14,
+          25
+        ],
+        [
+          25,
+          32
+        ]
+      ],
+      "descriptions_by_segment": {
+        "3": "The camera then focuses on the ground, where the orbs are rapidly accumulating, creating a sea of light that reflects off the intricately carved floor."
+      }
+    },
+    {
+      "case": 395,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          23
+        ],
+        [
+          23,
+          42
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "The scene opens with a high-angle view of a bright, modern building lobby where several people in business attire walk across the polished tile floor."
+      }
+    },
+    {
+      "case": 399,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          22
+        ],
+        [
+          22,
+          41
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "On a sun-drenched airport tarmac, a man in a black coat and sunglasses walks with purpose, surrounded by a chaotic throng of photographers and security."
+      }
+    },
+    {
+      "case": 400,
+      "task_type": "tiv2v",
+      "shot_spans": [
+        [
+          0,
+          15
+        ],
+        [
+          15,
+          33
+        ],
+        [
+          33,
+          40
+        ],
+        [
+          40,
+          48
+        ]
+      ],
+      "descriptions_by_segment": {
+        "1": "In a dimly lit, modern room, a middle-aged man in a suit appears contemplative before looking up with a serious expression."
+      }
+    }
+  ]
+}

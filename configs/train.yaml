@@ -1,0 +1,228 @@
+# Refrain training configuration.
+#
+# Training runs in three stages, each resuming from the previous one:
+#   text_to_video               19k steps  multi-shot T2V pre-training
+#   reference_training          +17k steps reference reconstruction, references match target lengths
+#   variable_duration_training  +9k steps  DurMix: references cropped/extended to independent lengths
+#
+#   tools/train.sh text_to_video
+#   tools/train.sh reference_training
+#   tools/train.sh variable_duration_training
+#
+# `shared` applies to every stage and each entry in `stages` overrides it.
+# Arguments not listed here use the defaults in hymm/config.py.
+
+shared:
+  # Paths
+  pretrained_model_name_or_path: weights
+  dit_model_name_or_path: weights/initialization/model.safetensors
+  index_file: [train/images/index.json]
+  skip_sources: []
+  val_index_file: [none]
+  video_csv: [benchmark/requests.json]
+
+  # Model
+  model_type: Refrain
+  attn_mode: flash3
+  rope_theta: 2000
+  ba_attn_chunk_size: 1024
+  allow_tf32: true
+  mixed_precision: bf16
+  gradient_checkpointing: true
+
+  # Text encoder, vision features and VAE
+  uncond_token: <|im_end|>
+  vae: 16164-48c-v3
+  vae_encode_tile_size: 2
+  text_encoder: qwen-3vl-8b
+  text_encoder_precision: bf16
+  text_len: 896
+  tokenizer: qwen-3vl-8b
+  prompt_template: li-dit-encode-image-qwen-vl-v2
+  prompt_template_video: li-dit-encode-video-qwen-vl-v2
+  hidden_state_skip_layer: 2
+  text_projection: single_refiner
+  vision_states_dim: 1152
+  vision_num_semantic_tokens: 729
+
+  # Shot timeline and reference conditioning
+  use_scale_rope: true
+  use_cond_3d_rope: true
+  use_visual_events: true
+  use_physical_rope: true
+  physical_rope_dim: 0
+  disable_text_physical_rope: true
+  physical_rope_time_range_mode: latent
+  physical_rope_alpha: 0.5
+  physical_rope_offset_mode: fixed
+  prompt_fps_prefix: FPS:24
+  multitask_mask_training_type: concat
+
+  # Flow matching and sampling
+  sample_n_frames: 241
+  flow_snr_type: mix
+  flow_shift_image: 2.0
+  flow_shift_video: 5.0
+  flow_reverse: true
+  infer_flow_shift: 2.0
+  infer_flow_shift_video: 7.0
+  infer_steps: 50
+
+  # Optimization and logging
+  global_seed: 20260212
+  weight_decay: 1.0e-05
+  num_workers: 8
+  image_micro_batch_size: [4]
+  video_micro_batch_size: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+  lr_scheduler: constant_with_warmup
+  log_interval: 1
+  validation_metrics: [val_loss]
+  try_first_iter: true
+  loss_spike_threshold: 1.0
+  repa_projector_hidden_dim: 0
+  repa_projector_out_dim: 0
+
+  # Parallelism
+  fsdp_sharding_strategy: hybrid
+
+  # Data and captions
+  data_type: video
+  image_size: [640]
+  index_strategy: probability
+  index_probability: [1.0]
+  image_caption_rate: 1.0
+  image_caption_processor: caption_process_v4
+  image_caption_col_probs: '{"image_caption_col":0.5,"image_caption_col_2":0.5}'
+  image_text_col: trans
+  image_text_col_2: simple_caption
+  image_caption_col: caption_v4_en_final
+  image_caption_col_2: caption_v4_zh_final
+  caption_sample_ratio: '{"long_long_caption":0.2,"long_caption":0.4,"medium_caption":0.2,"short_caption":0.2,"style":0.7,"shot_type":0.1,"ip":0.2}'
+  ocr_only_long_caption: true
+  text_remove_rate: 1.0
+  num_replace_rate: 0.2
+  video_num_replace_rate: 0.3
+  video_caption_i2v_instruction_col_probs: {}
+  video_caption_i2v_instruction_sub_col_probs: {}
+  ll_cap_sample_ratio: 0.0
+  ll_cap_caption_sample_ratio: '{"long_caption":0.40,"medium_caption":0.3,"short_caption":0.25,"background":0.8,"shot_type":0.8,"style":0.8,"light":0.8,"atmosphere":0.8}'
+  video_size: [640, 640]
+  video_multireso: true
+  video_multitemp: true
+  use_latent_shape: true
+  video_caption_sample_ratio: '{"long_caption":0.5,"medium_caption":0.4,"short_caption":0.1,"background":0.5,"shot_type":0.5,"shot_angle":0.5,"composition":0.5,"light":0.5,"style":0.7,"color_palette":0.0,"atmosphere":0.5,"camera_movement":0.5}'
+  video_caption_processor: caption_process_v4
+  video_caption_col_probs: {video_caption_col: 0.5, video_caption_col_2: 0.5}
+  video_caption_col: aiv_caption_en_v1_0
+  video_caption_col_2: aiv_caption_cn_v1_0
+  video_bucket_hw_base_size: 640
+  video_bucket_temporal_min_length: 33
+  video_bucket_temporal_max_length: 241
+  video_ll_cap_sample_ratio: 0.0
+  video_ll_cap_caption_sample_ratio: '{"long_caption":0.50,"short_caption":0.50,"background":0.8,"shot_type":0.8,"style":0.8,"light":0.8,"atmosphere":0.8,"high_quality":0.0}'
+  video_fps_col_name: latent_input_fps_divide_stride
+
+stages:
+  text_to_video:
+    output_dir: outputs/text_to_video
+    video_index_file: [train/t2v/index.json]
+    video_index_file_weights: [1.0]
+    resume: null
+    reference_timeline_debug_limit: 0
+    unified_physrope_enable: 'false'
+    unified_physrope_cond_loss_weight: 0.0
+    range_condition_temporal_pack_mode: legacy_trilinear
+    unified_physrope_temporal_resample_prob: 0.0
+    per_segment_condition_enable: 'false'
+    per_segment_condition_prob: 0.3
+    per_segment_prompt_empty_ratio: 0.7
+    per_segment_prompt_remove_ratio: 0.2
+    per_segment_condition_require_explicit_ranges: 'true'
+    physrope_prompt_debug_limit: 5
+    condition_dropout_prob: 0.0
+    rope_noninteger_jitter_prob: 0.0
+    rope_noninteger_jitter_range: 0.0
+    image_anchor_enable: 'false'
+    image_anchor_prob: 0.0
+    multitask_mask_training_args:
+      i2v: {prob: 0.0}
+      t2v: {prob: 1.0}
+    lr: 1.0e-05
+    train_iters: 19000
+    checkpointing_steps: 1000
+    lr_warmup_steps: 1000
+    sample_interval: 1000
+    validation_every: 1000
+    fixed_prompt_validation_every: 1000
+    distributed_timeout_sec: 3600
+    sp_size: 2
+
+  reference_training:
+    output_dir: outputs/reference_training
+    video_index_file: [train/references_equal/index.json]
+    video_index_file_weights: [1.0]
+    resume: outputs/text_to_video/global_step-19000
+    reference_timeline_debug_limit: 0
+    unified_physrope_enable: 'true'
+    unified_physrope_cond_loss_weight: 1.0
+    range_condition_temporal_pack_mode: legacy_trilinear
+    unified_physrope_temporal_resample_prob: 0.1
+    per_segment_condition_enable: 'true'
+    per_segment_condition_prob: 0.6
+    per_segment_prompt_empty_ratio: 0.7
+    per_segment_prompt_remove_ratio: 0.2
+    per_segment_condition_require_explicit_ranges: 'true'
+    physrope_prompt_debug_limit: 5
+    condition_dropout_prob: 0.2
+    rope_noninteger_jitter_prob: 0.1
+    rope_noninteger_jitter_range: 0.2
+    image_anchor_enable: 'true'
+    image_anchor_prob: 0.8
+    multitask_mask_training_args:
+      i2v: {prob: 0.0}
+      range_condition: {prob: 0.7}
+      t2v: {prob: 0.3}
+    lr: 1.0e-05
+    train_iters: 36000
+    checkpointing_steps: 500
+    lr_warmup_steps: 1000
+    sample_interval: 500
+    validation_every: 5000
+    fixed_prompt_validation_every: 500
+    distributed_timeout_sec: 3600
+    sp_size: 2
+
+  variable_duration_training:
+    output_dir: outputs/variable_duration_training
+    video_index_file: [train/durmix/index.json]
+    video_index_file_weights: [1.0]
+    resume: outputs/reference_training/global_step-36000
+    reference_timeline_debug_limit: 32
+    unified_physrope_enable: 'true'
+    unified_physrope_cond_loss_weight: 1.0
+    range_condition_temporal_pack_mode: reference_timeline
+    unified_physrope_temporal_resample_prob: 0.0
+    per_segment_condition_enable: 'true'
+    per_segment_condition_prob: 0.6
+    per_segment_prompt_empty_ratio: 0.0
+    per_segment_prompt_remove_ratio: 0.0
+    per_segment_condition_require_explicit_ranges: 'false'
+    physrope_prompt_debug_limit: 50
+    condition_dropout_prob: 0.2
+    rope_noninteger_jitter_prob: 0.0
+    rope_noninteger_jitter_range: 0.0
+    image_anchor_enable: 'true'
+    image_anchor_prob: 0.8
+    multitask_mask_training_args:
+      i2v: {prob: 0.0}
+      range_condition: {prob: 0.0}
+      t2v: {prob: 1.0}
+    lr: 2.0e-06
+    train_iters: 45000
+    checkpointing_steps: 500
+    lr_warmup_steps: 200
+    sample_interval: 500
+    validation_every: 5000
+    fixed_prompt_validation_every: 1000
+    distributed_timeout_sec: 14400
+    sp_size: 8

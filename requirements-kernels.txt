@@ -1,0 +1,4 @@
+# Install after requirements.txt, against the selected PyTorch/CUDA build:
+# python -m pip install --no-build-isolation --no-deps -r requirements-kernels.txt
+flash-attn==2.8.3
+# flex-block-attn==0.1: build from the official source; see docs/INSTALL.md.

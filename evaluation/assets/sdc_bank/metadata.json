@@ -1,0 +1,314 @@
+{
+  "format": "sdc_quantile_bank_v1",
+  "bank_id": "full_real_csd_STYLE_3env_5fold_20260923",
+  "csd_head": "module.last_layer_style",
+  "n_videos": 2144201,
+  "groups": 3,
+  "folds": 5,
+  "content_knots": 256,
+  "residual_knots": 48,
+  "levels": "0.5*(1-cos(pi*k/K)), k=0..K",
+  "interpolation": "monotone cubic (PCHIP) CDF",
+  "cells": [
+    {
+      "head": "csd",
+      "fold": 0,
+      "group": 0,
+      "file": "csd_fold0_group0.txt",
+      "kappa": 0.39854083768501813,
+      "minimum": 0.0,
+      "maximum": 2.061718225479126,
+      "pairs": 5176098
+    },
+    {
+      "head": "csd",
+      "fold": 0,
+      "group": 1,
+      "file": "csd_fold0_group1.txt",
+      "kappa": 0.39897933439597405,
+      "minimum": 0.0,
+      "maximum": 2.0806412398815155,
+      "pairs": 5165344
+    },
+    {
+      "head": "csd",
+      "fold": 0,
+      "group": 2,
+      "file": "csd_fold0_group2.txt",
+      "kappa": 0.39855310008054107,
+      "minimum": 0.0,
+      "maximum": 2.037988930940628,
+      "pairs": 5167875
+    },
+    {
+      "head": "csd",
+      "fold": 1,
+      "group": 0,
+      "file": "csd_fold1_group0.txt",
+      "kappa": 0.3989239753993211,
+      "minimum": 0.0,
+      "maximum": 2.0267215371131897,
+      "pairs": 5173647
+    },
+    {
+      "head": "csd",
+      "fold": 1,
+      "group": 1,
+      "file": "csd_fold1_group1.txt",
+      "kappa": 0.39890166451112613,
+      "minimum": 0.0,
+      "maximum": 2.183226525783539,
+      "pairs": 5168608
+    },
+    {
+      "head": "csd",
+      "fold": 1,
+      "group": 2,
+      "file": "csd_fold1_group2.txt",
+      "kappa": 0.3985062506823079,
+      "minimum": 0.0,
+      "maximum": 2.037988930940628,
+      "pairs": 5169702
+    },
+    {
+      "head": "csd",
+      "fold": 2,
+      "group": 0,
+      "file": "csd_fold2_group0.txt",
+      "kappa": 0.3988143981179804,
+      "minimum": 0.0,
+      "maximum": 2.061718225479126,
+      "pairs": 5171538
+    },
+    {
+      "head": "csd",
+      "fold": 2,
+      "group": 1,
+      "file": "csd_fold2_group1.txt",
+      "kappa": 0.39892568684614355,
+      "minimum": 0.0,
+      "maximum": 2.183226525783539,
+      "pairs": 5169067
+    },
+    {
+      "head": "csd",
+      "fold": 2,
+      "group": 2,
+      "file": "csd_fold2_group2.txt",
+      "kappa": 0.3987549041008199,
+      "minimum": 0.0,
+      "maximum": 2.037988930940628,
+      "pairs": 5169540
+    },
+    {
+      "head": "csd",
+      "fold": 3,
+      "group": 0,
+      "file": "csd_fold3_group0.txt",
+      "kappa": 0.3988038881052661,
+      "minimum": 0.0,
+      "maximum": 2.061718225479126,
+      "pairs": 5173935
+    },
+    {
+      "head": "csd",
+      "fold": 3,
+      "group": 1,
+      "file": "csd_fold3_group1.txt",
+      "kappa": 0.3989831995109937,
+      "minimum": 0.0,
+      "maximum": 2.183226525783539,
+      "pairs": 5168812
+    },
+    {
+      "head": "csd",
+      "fold": 3,
+      "group": 2,
+      "file": "csd_fold3_group2.txt",
+      "kappa": 0.39843660784367435,
+      "minimum": 0.0,
+      "maximum": 2.037988930940628,
+      "pairs": 5169045
+    },
+    {
+      "head": "csd",
+      "fold": 4,
+      "group": 0,
+      "file": "csd_fold4_group0.txt",
+      "kappa": 0.39862571742037334,
+      "minimum": 0.0,
+      "maximum": 2.061718225479126,
+      "pairs": 5172882
+    },
+    {
+      "head": "csd",
+      "fold": 4,
+      "group": 1,
+      "file": "csd_fold4_group1.txt",
+      "kappa": 0.3989206784078465,
+      "minimum": 0.0,
+      "maximum": 2.183226525783539,
+      "pairs": 5169969
+    },
+    {
+      "head": "csd",
+      "fold": 4,
+      "group": 2,
+      "file": "csd_fold4_group2.txt",
+      "kappa": 0.3985051639162425,
+      "minimum": 0.0,
+      "maximum": 2.018845021724701,
+      "pairs": 5166234
+    },
+    {
+      "head": "vgg",
+      "fold": 0,
+      "group": 0,
+      "file": "vgg_fold0_group0.txt",
+      "kappa": 0.07140605541936554,
+      "minimum": 0.0,
+      "maximum": 2.061718225479126,
+      "pairs": 5176098
+    },
+    {
+      "head": "vgg",
+      "fold": 0,
+      "group": 1,
+      "file": "vgg_fold0_group1.txt",
+      "kappa": 0.07142238780783339,
+      "minimum": 0.0,
+      "maximum": 2.0806412398815155,
+      "pairs": 5165344
+    },
+    {
+      "head": "vgg",
+      "fold": 0,
+      "group": 2,
+      "file": "vgg_fold0_group2.txt",
+      "kappa": 0.0713350504319321,
+      "minimum": 0.0,
+      "maximum": 2.037988930940628,
+      "pairs": 5167875
+    },
+    {
+      "head": "vgg",
+      "fold": 1,
+      "group": 0,
+      "file": "vgg_fold1_group0.txt",
+      "kappa": 0.0714352470002437,
+      "minimum": 0.0,
+      "maximum": 2.0267215371131897,
+      "pairs": 5173647
+    },
+    {
+      "head": "vgg",
+      "fold": 1,
+      "group": 1,
+      "file": "vgg_fold1_group1.txt",
+      "kappa": 0.07140449422062795,
+      "minimum": 0.0,
+      "maximum": 2.183226525783539,
+      "pairs": 5168608
+    },
+    {
+      "head": "vgg",
+      "fold": 1,
+      "group": 2,
+      "file": "vgg_fold1_group2.txt",
+      "kappa": 0.07135799110684583,
+      "minimum": 0.0,
+      "maximum": 2.037988930940628,
+      "pairs": 5169702
+    },
+    {
+      "head": "vgg",
+      "fold": 2,
+      "group": 0,
+      "file": "vgg_fold2_group0.txt",
+      "kappa": 0.07141709273232075,
+      "minimum": 0.0,
+      "maximum": 2.061718225479126,
+      "pairs": 5171538
+    },
+    {
+      "head": "vgg",
+      "fold": 2,
+      "group": 1,
+      "file": "vgg_fold2_group1.txt",
+      "kappa": 0.07141274578050753,
+      "minimum": 0.0,
+      "maximum": 2.183226525783539,
+      "pairs": 5169067
+    },
+    {
+      "head": "vgg",
+      "fold": 2,
+      "group": 2,
+      "file": "vgg_fold2_group2.txt",
+      "kappa": 0.07137364482739815,
+      "minimum": 0.0,
+      "maximum": 2.037988930940628,
+      "pairs": 5169540
+    },
+    {
+      "head": "vgg",
+      "fold": 3,
+      "group": 0,
+      "file": "vgg_fold3_group0.txt",
+      "kappa": 0.07143748679151136,
+      "minimum": 0.0,
+      "maximum": 2.061718225479126,
+      "pairs": 5173935
+    },
+    {
+      "head": "vgg",
+      "fold": 3,
+      "group": 1,
+      "file": "vgg_fold3_group1.txt",
+      "kappa": 0.07146019240679667,
+      "minimum": 0.0,
+      "maximum": 2.183226525783539,
+      "pairs": 5168812
+    },
+    {
+      "head": "vgg",
+      "fold": 3,
+      "group": 2,
+      "file": "vgg_fold3_group2.txt",
+      "kappa": 0.07136767677682239,
+      "minimum": 0.0,
+      "maximum": 2.037988930940628,
+      "pairs": 5169045
+    },
+    {
+      "head": "vgg",
+      "fold": 4,
+      "group": 0,
+      "file": "vgg_fold4_group0.txt",
+      "kappa": 0.07142824998182416,
+      "minimum": 0.0,
+      "maximum": 2.061718225479126,
+      "pairs": 5172882
+    },
+    {
+      "head": "vgg",
+      "fold": 4,
+      "group": 1,
+      "file": "vgg_fold4_group1.txt",
+      "kappa": 0.07138191288601174,
+      "minimum": 0.0,
+      "maximum": 2.183226525783539,
+      "pairs": 5169969
+    },
+    {
+      "head": "vgg",
+      "fold": 4,
+      "group": 2,
+      "file": "vgg_fold4_group2.txt",
+      "kappa": 0.07134525833296727,
+      "minimum": 0.0,
+      "maximum": 2.018845021724701,
+      "pairs": 5166234
+    }
+  ]
+}
