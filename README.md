@@ -139,7 +139,7 @@ large compared with real videos?*
 5. **Pooling.** Ranks from the two style heads are fused 2:1 and averaged over shot pairs:
 
 ```math
-\mathrm{SDC}(V)=\binom{K}{2}^{-1}\sum_{1\le i<j\le K}\left(R^{\mathrm{CSD}}_{ij}\right)^{2/3}\left(R^{\mathrm{VGG}}_{ij}\right)^{1/3}
+\mathrm{SDC}(V)=\binom{K}{2}^{-1}\sum_{1\le i \lt j\le K}\left(R^{\mathrm{CSD}}_{ij}\right)^{2/3}\left(R^{\mathrm{VGG}}_{ij}\right)^{1/3}
 ```
 
 ![SDC catches style edits that CLIP/ViCLIP miss and is not fooled by content cuts](assets/sdc_compare.jpg)
