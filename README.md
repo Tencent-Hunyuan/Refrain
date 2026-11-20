@@ -9,7 +9,7 @@
 <p align="center"><b>Any Reference · Any Duration · One Timeline</b></p>
 
 <p align="center">
-<a href="https://tencent-hunyuan.github.io/Refrain/"><img src="https://img.shields.io/badge/Project-Page-ff6f61.svg" alt="Project Page"></a>
+<a href="https://refrain-page.github.io/"><img src="https://img.shields.io/badge/Project-Page-ff6f61.svg" alt="Project Page"></a>
 <a href="#"><img src="https://img.shields.io/badge/arXiv-coming%20soon-b31b1b.svg" alt="arXiv"></a>
 <a href="https://github.com/Tencent-Hunyuan/Refrain"><img src="https://img.shields.io/badge/GitHub-Code-181717.svg?logo=github" alt="Code"></a>
 <a href="#refrain-benchmark"><img src="https://img.shields.io/badge/Benchmark-300%20requests-2ea44f.svg" alt="Benchmark"></a>
@@ -32,7 +32,7 @@ its requested duration, and references with clashing styles are rendered in one 
 The model learns this by **reconstructing an unedited video from references that were restyled
 independently**, so it has to remove the style clashes itself. We also release the **Refrain
 Benchmark** and **Shot-Debiased Consistency (SDC)**, a cross-shot style metric calibrated on 2.14M
-real videos. More results are on the [project page](https://tencent-hunyuan.github.io/Refrain/).
+real videos. More results are on the [project page](https://refrain-page.github.io/).
 
 ![Refrain teaser: T2V, V2V, TI2V and TIV2V requests on one shared timeline](assets/teaser.jpg)
 
