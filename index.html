@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Refrain: Learning Multi-Shot Consistency from Inconsistent References for A²O Video Generation</title>
+<meta name="description" content="Refrain generates coherent multi-shot videos in one diffusion pass from any mix of text, image and video references: Any Reference, Any Duration, One Timeline.">
+<meta property="og:title" content="Refrain: Any Reference · Any Duration · One Timeline">
+<meta property="og:description" content="Learning multi-shot consistency from inconsistent references for A²O video generation.">
+<meta property="og:image" content="assets/figures/teaser.jpg">
+<link rel="icon" type="image/svg+xml" href="assets/figures/refrain-icon.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero" id="top">
+  <div class="container">
+    <div class="project-mark"><img src="assets/figures/refrain-icon.svg" width="240" alt="Refrain logo"></div>
+    <h1>Refrain<span>Learning Multi-Shot Consistency from Inconsistent References for A²O Video Generation</span></h1>
+    <div class="tagline">Any Reference · Any Duration · One Timeline</div>
+    <div class="authors">
+      <span>Hongru Yan<sup>1,2,*</sup></span>
+      <span>Yue Wu<sup>2,‡</sup></span>
+      <span>Jian-Wei Zhang<sup>2</sup></span>
+      <span>Liangbin Xie<sup>2,3</sup></span>
+      <span>Mingzhe Zheng<sup>2,4</sup></span>
+      <span>Shenghua Gao<sup>1,†</sup></span>
+    </div>
+    <div class="affiliations">
+      <span><sup>1</sup> The University of Hong Kong</span>
+      <span><sup>2</sup> Tencent</span>
+      <span><sup>3</sup> University of Macau</span>
+      <span><sup>4</sup> The Hong Kong University of Science and Technology</span>
+    </div>
+    <div class="notes"><sup>*</sup> Work done during internship at Tencent Hunyuan &nbsp;&nbsp; <sup>†</sup> Corresponding author &nbsp;&nbsp; <sup>‡</sup> Project leader</div>
+    <div class="actions">
+      <a class="button" href="#" title="arXiv link coming soon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h6"/></svg>arXiv</a>
+      <a class="button" href="https://github.com/Tencent-Hunyuan/Refrain"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z"/></svg>Code</a>
+      <a class="button" href="#benchmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18M7 15l4-4 3 3 6-6"/></svg>Benchmark &amp; SDC</a>
+      <a class="button" href="#gallery"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 5 11 7-11 7z"/></svg>Visual results</a>
+    </div>
+    <nav class="hero-links" aria-label="Page sections">
+      <a href="#highlights">Highlights</a><a href="#abstract">Abstract</a><a href="#method">Method</a><a href="#sdc">SDC</a><a href="#comparison">Comparison</a><a href="#gallery">Gallery</a><a href="#results">Results</a><a href="#citation">Citation</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+<section class="teaser" aria-label="Teaser">
+  <figure>
+    <a class="figure-frame" href="assets/figures/teaser.jpg"><img src="assets/figures/teaser.jpg" alt="Refrain teaser: T2V, V2V, TI2V and TIV2V requests on one shared timeline" width="1600" height="1280"></a>
+    <figcaption class="caption"><strong>Unified multi-shot generation with Refrain.</strong> Each row is a separate request with text, video, image or joint conditioning. References differ in appearance and in duration <i>R</i>, which can be shorter or longer than the target shot duration <i>D</i>.</figcaption>
+  </figure>
+</section>
+
+<section id="highlights" class="panel" style="--accent:#ea580c">
+  <h2>Highlights</h2>
+  <p class="intro">Refrain generates a coherent multi-shot video in <strong>a single diffusion pass</strong> from any mix of text, image and video references, and renders references with clashing styles in one consistent look.</p>
+  <ol class="method-list">
+    <li><strong>Self-supervised reconstruction learning.</strong> Reference shots from the same source video are edited independently, and the model learns to recover the unedited source under a shared style prompt. It suppresses style conflicts while keeping reference content and motion. DurMix-300K provides these pairs with variable reference durations.</li>
+    <li><strong>Unified sparse conditioning (A²O).</strong> One backbone handles T2V, V2V, TI2V and TIV2V. References are placed sparsely on a shared temporal canvas, with no added conditioning modules.</li>
+    <li><strong>Shot-Debiased Consistency (SDC).</strong> A cross-shot style metric that compares style change with what real videos show at the same amount of content change, calibrated on a 2.14M-video bank.</li>
+  </ol>
+</section>
+
+<section id="abstract" class="panel abstract" style="--accent:#2563eb">
+  <h2>Abstract</h2>
+  <p>A comic-book character, a photorealistic cityscape, an oil-painted coffee cup: such stylistically diverse references provide visual guidance across shots and frames, yet generating a coherent multi-shot video that unifies their visual styles while preserving subject identities and scene content remains challenging. Existing methods maintain cross-shot continuity through additional attention control or memory processing. However, they struggle to resolve disparate per-shot styles or handle reference–target duration mismatches within a single framework.</p>
+  <p>To tackle this, we introduce <strong>Refrain</strong>, a unified model that learns cross-shot consistency through a self-supervised reconstruction task: reference clips from the same original video are deliberately perturbed with distinct visual edits, challenging the model to recover the unedited source footage under a shared style prompt. In this way, Refrain learns to suppress conflicting stylistic artifacts while faithfully retaining reference content and motion dynamics. Operating on the A²O principle (<strong>Any Reference, Any Duration, One Timeline</strong>), Refrain maps image and video references onto a shared temporal canvas without auxiliary conditioning modules. For evaluation, experiments show that standard CLIP or DINO metrics frequently overlook stylistic clashes or misinterpret intended narrative cuts as inconsistency. We therefore propose <strong>Shot-Debiased Consistency (SDC)</strong>, which uses an extensive real-video bank to establish a baseline for style variation associated with content changes. By discounting this baseline, SDC evaluates cross-shot style shifts against real-world distributions. We further construct <strong>DurMix-300K</strong>, a dataset pairing stylistically altered clips of varying lengths with their original video sequences, to train the model. Extensive experiments demonstrate that Refrain achieves state-of-the-art performance in cross-shot consistency, while excelling at shot timing, reference adherence, and text alignment.</p>
+</section>
+
+<section id="method" class="panel" style="--accent:#059669">
+  <h2>How Refrain Works</h2>
+  <figure>
+    <a class="figure-frame" href="assets/figures/method.png"><img src="assets/figures/method.png" alt="DurMix data construction (A) and the Refrain model (B)" width="1600" height="1032" loading="lazy"></a>
+    <figcaption class="caption"><strong>Self-supervised reconstruction and unified conditioning.</strong> (A) Reconstructing coherent source videos from independently edited references. (B) Joint multi-shot generation with sparse references on one timeline. Black marks occupied mask positions.</figcaption>
+  </figure>
+  <h3>(A) DurMix-300K: references that disagree on purpose</h3>
+  <p>A coherent multi-shot source video is cut into shots. The first frame of selected shots is edited with one of 61 instructions (lighting, background, style transfer, subject appearance, …), the clip is optionally cropped or extended to a new length, and the edit is propagated through the clip with depth-conditioned video generation. Each shot is edited <em>independently</em>, so the references clash with each other, while the <strong>unedited source video remains the reconstruction target</strong>. To reconstruct it, the model has to keep what the references show and remove how they were restyled.</p>
+  <h3>(B) One canvas, one trajectory</h3>
+  <ol class="method-list">
+    <li><strong>Reference canvas + occupancy mask.</strong> All conditions are encoded by the 3D VAE and written at their exact positions on the target timeline; empty slots are generated. An image anchor occupies one latent frame.</li>
+    <li><strong>Sparse placement for any duration.</strong> A reference shorter than its shot fills only part of the shot; a longer one is mapped onto the shot's latent frames by frame selection that keeps its first and last frame. Latents are never interpolated.</li>
+    <li><strong>Shot-aware RoPE.</strong> Each token carries its shot coordinate plus a per-shot offset, so the DiT knows where cuts are and which tokens belong together.</li>
+    <li><strong>Shared style prompt + per-shot text.</strong> A global style description applies to every shot; each shot can add its own description or only a reference instruction.</li>
+  </ol>
+  <p style="margin-top:18px">The HunyuanVideo-1.5 DiT backbone (8.49B) is unchanged. Training runs in three stages: multi-shot T2V pre-training, reconstruction from references that match their target length, and reconstruction from variable-duration DurMix references.</p>
+</section>
+
+<section id="sdc" class="panel" style="--accent:#9333ea">
+  <h2>Shot-Debiased Consistency (SDC)</h2>
+  <p>A cut to a new character or location naturally changes CLIP/DINO features, so those metrics read intended narrative changes as inconsistency, and they barely react to a real style clash. SDC asks instead: <em>given how much the content changed between two shots, is the style change unusually large compared with real videos?</em></p>
+  <figure>
+    <a class="figure-frame" href="assets/figures/sdc_figure.png"><img src="assets/figures/sdc_figure.png" alt="SDC construction: shot energies, content-style calibration and kappa stability" width="1600" height="732" loading="lazy"></a>
+    <figcaption class="caption"><strong>SDC construction.</strong> (A) Within- and cross-shot energies. (B) Content–style calibration. (C) The calibration slope κ is stable from 1K to 2.14M real videos.</figcaption>
+  </figure>
+  <ol class="method-list">
+    <li><strong>Shot energies.</strong> DINOv2 content features and two style heads (CSD, VGG AdaIN statistics) are compared across and within shots, giving a content energy and a style energy for every shot pair.</li>
+    <li><strong>Real-video calibration.</strong> Style energy is corrected for its dependence on content energy (κ ≈ 0.399) and converted into a conditional survival rank within the real-video bank.</li>
+    <li><strong>Pooling.</strong> Ranks from the two style heads are fused 2:1 and averaged over shot pairs.</li>
+  </ol>
+  <div class="equation">SDC(<i>V</i>) = <span style="font-size:24px">(</span><i>K</i> choose 2<span style="font-size:24px">)</span><sup>−1</sup> Σ<sub><i>i</i>&lt;<i>j</i></sub> (<i>R</i><sub><i>ij</i></sub><sup>CSD</sup>)<sup>2/3</sup> (<i>R</i><sub><i>ij</i></sub><sup>VGG</sup>)<sup>1/3</sup></div>
+  <figure>
+    <a class="figure-frame" href="assets/figures/sdc_compare.jpg"><img src="assets/figures/sdc_compare.jpg" alt="SDC detects style edits missed by CLIP and ViCLIP and stays high across coherent scene cuts" width="1600" height="843" loading="lazy"></a>
+    <figcaption class="caption"><strong>Qualitative validation.</strong> Top: a style edit on one shot drops SDC by 90–99% while CLIP and ViCLIP barely move. Bottom: coherent cuts between very different shots keep a high SDC even though DINO similarity is near zero.</figcaption>
+  </figure>
+</section>
+
+<section id="comparison" class="panel" style="--accent:#0891b2">
+  <h2>Comparison with Baselines</h2>
+  <p>The three requests from the paper's qualitative comparison. Refrain, StoryMem and Phantom receive the same per-shot references and prompts. The references are restyled independently on purpose; Refrain follows their content and shot descriptions while rendering all shots in one shared style, whereas StoryMem and Phantom copy each reference's style or drift away from the references.</p>
+<article class="case compare-case">
+  <div class="case-title"><span class="tag V2V">V2V</span><h3>Communal meal in the sun</h3><span class="case-meta">3 shots · 8.0 s · text + video references</span><button class="play-together" type="button">▶ Play together</button></div>
+  <div class="compare-grid"><div class="clip ours"><h4>Refrain (ours)</h4><div class="video-frame"><video src="assets/cases/compare-113/ours.mp4" muted loop playsinline preload="metadata"></video></div></div><div class="clip"><h4>StoryMem</h4><div class="video-frame"><video src="assets/cases/compare-113/storymem.mp4" muted loop playsinline preload="metadata"></video></div></div><div class="clip"><h4>Phantom</h4><div class="video-frame"><video src="assets/cases/compare-113/phantom.mp4" muted loop playsinline preload="metadata"></video></div></div></div>
+  <div class="compare-cond"><div class="style-box"><span class="style-label">Shared style</span>Documentary, Realistic. The style is observational, capturing candid moments of social interaction. Bright, direct natural sunlight from a high angle, creating strong highlights and defined shadows. The lighting is high-key, contributing to the cheerful and open atmosphere. Joyful, social, and convivial. The video captures the warmth and intimacy of a community gathering, filled with laughter, conversation, and shared meals.</div><ol class="shot-list"><li class="shot-row"><div class="thumbs"><div class="thumb"><video src="assets/cases/compare-113/ref_shot1_video.mp4" poster="assets/cases/compare-113/ref_shot1_video.jpg" muted loop playsinline preload="none" data-autoplay></video></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 1</b><span>0.0 – 2.5 s</span></div><div class="ref-line"><span class="chip video">Video</span><span class="ref-note video">Camera / Lens Filter · 1.5 s clip</span></div><p>Under bright sunshine, a large group of people are gathered for a communal meal in a rustic courtyard.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb empty">text only</div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 2</b><span>2.5 – 4.7 s</span></div><p>The scene is filled with lively interactions: two men share a laugh at a table laden with food, an older man affectionately hugs another from behind, and a young couple sits intimately by a stone wall.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb"><video src="assets/cases/compare-113/ref_shot3_video.mp4" poster="assets/cases/compare-113/ref_shot3_video.jpg" muted loop playsinline preload="none" data-autoplay></video></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 3</b><span>4.7 – 8.0 s</span></div><div class="ref-line"><span class="chip video">Video</span><span class="ref-note video">Spatial Relation Change · 4.2 s clip</span></div><p>The atmosphere is one of warmth, connection, and celebration, captured with natural light that highlights the joyful expressions and social bonds of the attendees.</p></div></li></ol></div>
+</article>
+<article class="case compare-case">
+  <div class="case-title"><span class="tag TI2V">TI2V</span><h3>Reading a comic under blue light</h3><span class="case-meta">2 shots · 5.0 s · text + image anchor</span><button class="play-together" type="button">▶ Play together</button></div>
+  <div class="compare-grid"><div class="clip ours"><h4>Refrain (ours)</h4><div class="video-frame"><video src="assets/cases/compare-412/ours.mp4" muted loop playsinline preload="metadata"></video></div></div><div class="clip"><h4>StoryMem</h4><div class="video-frame"><video src="assets/cases/compare-412/storymem.mp4" muted loop playsinline preload="metadata"></video></div></div><div class="clip"><h4>Phantom</h4><div class="video-frame"><video src="assets/cases/compare-412/phantom.mp4" muted loop playsinline preload="metadata"></video></div></div></div>
+  <div class="compare-cond"><div class="style-box"><span class="style-label">Shared style</span>Realistic, contemporary drama. Cool, soft key light from the front-left, creating subtle shadows on the right side of the subject&#x27;s face. The background is dimly lit with some bokeh highlights, suggesting a low-key lighting setup. Contemplative and serious. The cool lighting and the character&#x27;s focused, somber expression create a mood of quiet introspection and concern.</div><ol class="shot-list"><li class="shot-row"><div class="thumbs"><div class="thumb empty">text only</div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 1</b><span>0.0 – 1.7 s</span></div><p>In a dimly lit room with cool blue lighting, a young man&#x27;s hands are shown holding an open black-and-white comic book.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb"><img src="assets/cases/compare-412/ref_shot2_image.jpg" alt="Image anchor" loading="lazy"></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 2</b><span>1.7 – 5.0 s</span></div><div class="ref-line"><span class="chip image">Image</span><span class="ref-note image">unedited frame @ 3.5 s</span></div><p>The scene then cuts to a close-up of his face.</p></div></li></ol></div>
+</article>
+<article class="case compare-case">
+  <div class="case-title"><span class="tag TIV2V">TIV2V</span><h3>Encounter in a Chinese courtyard</h3><span class="case-meta">5 shots · 10.3 s · text + image anchor + video references</span><button class="play-together" type="button">▶ Play together</button></div>
+  <div class="compare-grid"><div class="clip ours"><h4>Refrain (ours)</h4><div class="video-frame"><video src="assets/cases/compare-255/ours.mp4" muted loop playsinline preload="metadata"></video></div></div><div class="clip"><h4>StoryMem</h4><div class="video-frame"><video src="assets/cases/compare-255/storymem.mp4" muted loop playsinline preload="metadata"></video></div></div><div class="clip"><h4>Phantom</h4><div class="video-frame"><video src="assets/cases/compare-255/phantom.mp4" muted loop playsinline preload="metadata"></video></div></div></div>
+  <div class="compare-cond"><div class="style-box"><span class="style-label">Shared style</span>Realistic, historical drama aesthetic. Bright, diffuse natural daylight, suggesting an overcast sky or indirect sunlight. The lighting is even and soft, with minimal harsh shadows, creating a clear and gentle visual tone. Initially serene and tranquil, the atmosphere shifts to one of surprise and slight tension with the unexpected arrival of the second woman.</div><ol class="shot-list"><li class="shot-row"><div class="thumbs"><div class="thumb"><video src="assets/cases/compare-255/ref_shot1_video.mp4" poster="assets/cases/compare-255/ref_shot1_video.jpg" muted loop playsinline preload="none" data-autoplay></video></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 1</b><span>0.0 – 1.2 s</span></div><div class="ref-line"><span class="chip video">Video</span><span class="ref-note video">Subject Appearance · 0.7 s clip</span></div><p>In a beautifully landscaped traditional Chinese courtyard, a woman dressed in a flowing light blue and white gown walks calmly across the gravel path.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb"><img src="assets/cases/compare-255/ref_shot2_image.jpg" alt="Image anchor" loading="lazy"></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 2</b><span>1.2 – 5.2 s</span></div><div class="ref-line"><span class="chip image">Image</span><span class="ref-note image">unedited frame @ 3.2 s</span></div><p>The scene is peaceful, with wooden buildings, a small bridge over a pond, and ornate lanterns.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb"><video src="assets/cases/compare-255/ref_shot3_video.mp4" poster="assets/cases/compare-255/ref_shot3_video.jpg" muted loop playsinline preload="none" data-autoplay></video></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 3</b><span>5.2 – 7.2 s</span></div><div class="ref-line"><span class="chip video">Video</span><span class="ref-note video">Subject Appearance · 2.7 s clip</span></div><p>Her walk is interrupted by the arrival of another woman in a vibrant red dress, who runs across the bridge.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb empty">text only</div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 4</b><span>7.2 – 9.0 s</span></div><p>The first woman stops, her expression shifting to surprise as she greets the newcomer.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb"><video src="assets/cases/compare-255/ref_shot5_video.mp4" poster="assets/cases/compare-255/ref_shot5_video.jpg" muted loop playsinline preload="none" data-autoplay></video></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 5</b><span>9.0 – 10.3 s</span></div><div class="ref-line"><span class="chip video">Video</span><span class="ref-note video">Style Transfer · 1.7 s clip</span></div><p>The two women then engage in a conversation, their expressions conveying a mix of shock and inquiry.</p></div></li></ol></div>
+</article>
+  <h3>Reference duration ≠ shot duration</h3>
+  <figure>
+    <a class="figure-frame" href="assets/figures/duration_short.jpg"><img src="assets/figures/duration_short.jpg" alt="A 3.7 s reference controlling a 6.5 s shot" width="2177" height="419" loading="lazy"></a>
+    <figcaption class="caption"><strong>Short reference, longer target (3.7 s → 6.5 s).</strong> Refrain keeps the pace of the camera gesture and brings the referenced shot into the style of the surrounding shots.</figcaption>
+  </figure>
+  <figure>
+    <a class="figure-frame" href="assets/figures/duration_long.jpg"><img src="assets/figures/duration_long.jpg" alt="A 3.9 s reference controlling a 2.8 s shot" width="2200" height="427" loading="lazy"></a>
+    <figcaption class="caption"><strong>Long reference, shorter target (3.9 s → 2.8 s).</strong> Refrain condenses the action while keeping the reaction, the hand gesture and the head turn at a natural pace.</figcaption>
+  </figure>
+</section>
+
+<section id="gallery" class="panel" style="--accent:#ea580c">
+  <h2>Gallery</h2>
+  <p>All videos are generated by Refrain in a single pass on held-out Refrain Benchmark requests. Next to each video, every shot lists its condition (a video reference with its edit type and length, an image anchor, or text only) and its prompt. References are <strong>deliberately restyled</strong> per shot; Refrain renders them in one consistent style.</p>
+  <div class="filters" role="group" aria-label="Filter by task">
+    <button class="filter active" data-task="all">All</button>
+    <button class="filter" data-task="TI2V">TI2V · text + image</button>
+    <button class="filter" data-task="V2V">V2V · text + video</button>
+    <button class="filter" data-task="TIV2V">TIV2V · text + image + video</button>
+  </div>
+<article class="case" data-task="TI2V">
+  <div class="case-title"><span class="tag TI2V">TI2V</span><h3>Party treats</h3><span class="case-meta">3 shots · 5.0 s · text + image anchor</span></div>
+  <div class="case-grid">
+    <div class="case-video"><div class="video-frame"><video src="assets/cases/case19-ti2v/ours.mp4" poster="assets/cases/case19-ti2v/poster.jpg" muted loop playsinline preload="none" controls data-autoplay></video></div></div>
+    <div class="case-cond"><div class="style-box"><span class="style-label">Shared style</span>Realistic, contemporary teen drama style. Dim, warm ambient lighting with colored party lights (pink, purple) creating a festive but intimate feel. Soft key light on the characters&#x27; faces. A lively and social party atmosphere, with a hint of playful tension or anticipation among the characters.</div><ol class="shot-list"><li class="shot-row"><div class="thumbs"><div class="thumb empty">text only</div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 1</b><span>0.0 – 1.7 s</span></div><p>In a dimly lit room decorated for a party with colorful balloons and banners, a woman in a black suit holds a tray piled high with rice krispie treats.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb"><img src="assets/cases/case19-ti2v/ref_shot2_image.jpg" alt="Image anchor" loading="lazy"></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 2</b><span>1.7 – 3.5 s</span></div><div class="ref-line"><span class="chip image">Image</span><span class="ref-note image">unedited frame @ 2.8 s</span></div><p>She offers them to a group of young women.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb empty">text only</div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 3</b><span>3.5 – 5.0 s</span></div><p>One woman in a pink dress looks on with a skeptical expression, while another in a blue dress looks on with a slight smile.</p></div></li></ol></div>
+  </div>
+</article>
+<article class="case" data-task="TI2V">
+  <div class="case-title"><span class="tag TI2V">TI2V</span><h3>Night street, vintage car</h3><span class="case-meta">4 shots · 7.2 s · text + image anchor</span></div>
+  <div class="case-grid">
+    <div class="case-video"><div class="video-frame"><video src="assets/cases/case20-ti2v/ours.mp4" poster="assets/cases/case20-ti2v/poster.jpg" muted loop playsinline preload="none" controls data-autoplay></video></div></div>
+    <div class="case-cond"><div class="style-box"><span class="style-label">Shared style</span>Realistic, with a strong nostalgic and film noir aesthetic. Low-key artificial lighting from street lamps, neon signs, and string lights, creating a high-contrast chiaroscuro effect with deep shadows and warm, specular highlights on the wet ground. Mysterious, tense, and nostalgic, evoking a classic film noir or historical drama feel.</div><ol class="shot-list"><li class="shot-row"><div class="thumbs"><div class="thumb empty">text only</div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 1</b><span>0.0 – 2.8 s</span></div><p>The scene opens on a high-angle view of a bustling, wet cobblestone street at night, filled with pedestrians and vintage cars under the glow of neon signs.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb"><img src="assets/cases/case20-ti2v/ref_shot2_image.jpg" alt="Image anchor" loading="lazy"></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 2</b><span>2.8 – 4.0 s</span></div><div class="ref-line"><span class="chip image">Image</span><span class="ref-note image">unedited frame @ 3.5 s</span></div><p>The camera then focuses on a black vintage sedan as it drives through the street, passing by men in suits.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb empty">text only</div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 3</b><span>4.0 – 5.8 s</span></div><p>The camera tracks the car as it moves, eventually settling on a close-up of a woman sitting pensively in the back seat.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb empty">text only</div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 4</b><span>5.8 – 7.2 s</span></div><p>Her face, illuminated by the passing city lights, holds a serious and watchful expression as she gazes out the window.</p></div></li></ol></div>
+  </div>
+</article>
+<article class="case" data-task="V2V">
+  <div class="case-title"><span class="tag V2V">V2V</span><h3>Film-noir close-up</h3><span class="case-meta">3 shots · 6.3 s · text + video references</span></div>
+  <div class="case-grid">
+    <div class="case-video"><div class="video-frame"><video src="assets/cases/case7-v2v/ours.mp4" poster="assets/cases/case7-v2v/poster.jpg" muted loop playsinline preload="none" controls data-autoplay></video></div></div>
+    <div class="case-cond"><div class="style-box"><span class="style-label">Shared style</span>Realistic, Psychological Thriller, Film Noir. High-contrast key lighting, likely from a single source, creating dramatic shadows on the subjects&#x27; faces and enhancing the tense mood. Tense, unsettling, and psychologically charged, with a strong sense of suspense and unease.</div><ol class="shot-list"><li class="shot-row"><div class="thumbs"><div class="thumb"><video src="assets/cases/case7-v2v/ref_shot1_video.mp4" poster="assets/cases/case7-v2v/ref_shot1_video.jpg" muted loop playsinline preload="none" data-autoplay></video></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 1</b><span>0.0 – 1.8 s</span></div><div class="ref-line"><span class="chip video">Video</span><span class="ref-note video">Style Transfer · 1.7 s clip</span></div><p>In a stark, black and white room, a heavy-set man with glasses smiles and chuckles, his face filling the frame.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb empty">text only</div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 2</b><span>1.8 – 4.7 s</span></div><p>The camera slowly zooms in, intensifying his unsettling expression.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb"><video src="assets/cases/case7-v2v/ref_shot3_video.mp4" poster="assets/cases/case7-v2v/ref_shot3_video.jpg" muted loop playsinline preload="none" data-autoplay></video></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 3</b><span>4.7 – 6.3 s</span></div><div class="ref-line"><span class="chip video">Video</span><span class="ref-note video">Lighting / Weather · 1.5 s clip</span></div><p>The shot cuts back to the man with glasses, who continues to smile and chuckle, his face partially in shadow and his expression still unsettling.</p></div></li></ol></div>
+  </div>
+</article>
+<article class="case" data-task="V2V">
+  <div class="case-title"><span class="tag V2V">V2V</span><h3>Woman on a green sofa</h3><span class="case-meta">3 shots · 5.2 s · text + video references</span></div>
+  <div class="case-grid">
+    <div class="case-video"><div class="video-frame"><video src="assets/cases/case8-v2v/ours.mp4" poster="assets/cases/case8-v2v/poster.jpg" muted loop playsinline preload="none" controls data-autoplay></video></div></div>
+    <div class="case-cond"><div class="style-box"><span class="style-label">Shared style</span>Realistic, cinematic drama. Soft, warm indoor lighting. The first shot uses a key light from the side, creating gentle shadows. The final shot employs dramatic, low-key lighting with a strong side light that creates high contrast and deep shadows. Tense, somber, and dramatic. A feeling of quiet anticipation and unspoken conflict permeates the scenes.</div><ol class="shot-list"><li class="shot-row"><div class="thumbs"><div class="thumb"><video src="assets/cases/case8-v2v/ref_shot1_video.mp4" poster="assets/cases/case8-v2v/ref_shot1_video.jpg" muted loop playsinline preload="none" data-autoplay></video></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 1</b><span>0.0 – 2.0 s</span></div><div class="ref-line"><span class="chip video">Video</span><span class="ref-note video">Style Transfer · 1.9 s clip</span></div></div></li><li class="shot-row"><div class="thumbs"><div class="thumb empty">text only</div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 2</b><span>2.0 – 3.3 s</span></div><p>The lighting is warm and soft, highlighting her pensive mood.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb"><video src="assets/cases/case8-v2v/ref_shot3_video.mp4" poster="assets/cases/case8-v2v/ref_shot3_video.jpg" muted loop playsinline preload="none" data-autoplay></video></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 3</b><span>3.3 – 5.2 s</span></div><div class="ref-line"><span class="chip video">Video</span><span class="ref-note video">Lighting / Weather · 1.7 s clip</span></div></div></li></ol></div>
+  </div>
+</article>
+<article class="case" data-task="V2V">
+  <div class="case-title"><span class="tag V2V">V2V</span><h3>Tense talk in a bar</h3><span class="case-meta">5 shots · 9.0 s · text + video references</span></div>
+  <div class="case-grid">
+    <div class="case-video"><div class="video-frame"><video src="assets/cases/case9-v2v/ours.mp4" poster="assets/cases/case9-v2v/poster.jpg" muted loop playsinline preload="none" controls data-autoplay></video></div></div>
+    <div class="case-cond"><div class="style-box"><span class="style-label">Shared style</span>Realistic, cinematic drama. The shallow depth of field and warm color grading give it a filmic quality. Soft, warm key light from the side, illuminating the characters&#x27; faces against a dark background. The lighting creates a high-contrast, intimate mood with gentle shadows. Intimate and tense. The close-up shots and dim lighting create a feeling of a serious, private conversation with underlying emotional conflict.</div><ol class="shot-list"><li class="shot-row"><div class="thumbs"><div class="thumb"><video src="assets/cases/case9-v2v/ref_shot1_video.mp4" poster="assets/cases/case9-v2v/ref_shot1_video.jpg" muted loop playsinline preload="none" data-autoplay></video></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 1</b><span>0.0 – 2.5 s</span></div><div class="ref-line"><span class="chip video">Video</span><span class="ref-note video">Background Retexture · 2.0 s clip</span></div></div></li><li class="shot-row"><div class="thumbs"><div class="thumb empty">text only</div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 2</b><span>2.5 – 4.3 s</span></div><p>The scene is composed of alternating close-up shots, focusing on their subtle facial expressions.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb"><video src="assets/cases/case9-v2v/ref_shot3_video.mp4" poster="assets/cases/case9-v2v/ref_shot3_video.jpg" muted loop playsinline preload="none" data-autoplay></video></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 3</b><span>4.3 – 6.0 s</span></div><div class="ref-line"><span class="chip video">Video</span><span class="ref-note video">Lighting / Weather · 1.0 s clip</span></div></div></li><li class="shot-row"><div class="thumbs"><div class="thumb empty">text only</div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 4</b><span>6.0 – 7.8 s</span></div><p>The soft, directional lighting highlights their faces, creating an intimate yet strained atmosphere as they speak to each other.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb"><video src="assets/cases/case9-v2v/ref_shot5_video.mp4" poster="assets/cases/case9-v2v/ref_shot5_video.jpg" muted loop playsinline preload="none" data-autoplay></video></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 5</b><span>7.8 – 9.0 s</span></div><div class="ref-line"><span class="chip video">Video</span><span class="ref-note video">Style Transfer · 0.5 s clip</span></div></div></li></ol></div>
+  </div>
+</article>
+<article class="case" data-task="V2V">
+  <div class="case-title"><span class="tag V2V">V2V</span><h3>Stylish brick-wall bar</h3><span class="case-meta">5 shots · 6.3 s · text + video references</span></div>
+  <div class="case-grid">
+    <div class="case-video"><div class="video-frame"><video src="assets/cases/case10-v2v/ours.mp4" poster="assets/cases/case10-v2v/poster.jpg" muted loop playsinline preload="none" controls data-autoplay></video></div></div>
+    <div class="case-cond"><div class="style-box"><span class="style-label">Shared style</span>Realistic with a cinematic, moody aesthetic. The lighting and color grading give it a slightly stylized, dramatic feel. Low-key lighting with multiple sources. Warm, soft light emanates from cylindrical table lamps and backlights within the wall shelves, creating a cozy yet dramatic effect. Cool blue and purple ambient light fills the space, adding depth and a modern, stylish feel. Tense and expectant. The dim lighting and the characters&#x27; focused expressions create a feeling of anticipation and seriousness, as if a significant event is about to unfold.</div><ol class="shot-list"><li class="shot-row"><div class="thumbs"><div class="thumb"><video src="assets/cases/case10-v2v/ref_shot1_video.mp4" poster="assets/cases/case10-v2v/ref_shot1_video.jpg" muted loop playsinline preload="none" data-autoplay></video></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 1</b><span>0.0 – 1.2 s</span></div><div class="ref-line"><span class="chip video">Video</span><span class="ref-note video">Style Transfer · 0.7 s clip</span></div><p>The scene unfolds in a stylish, dimly lit bar with a prominent red brick wall.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb empty">text only</div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 2</b><span>1.2 – 2.2 s</span></div><p>A man with a top-knot and glasses, wearing a floral shirt, sits at a glass table, holding a drink.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb"><video src="assets/cases/case10-v2v/ref_shot3_video.mp4" poster="assets/cases/case10-v2v/ref_shot3_video.jpg" muted loop playsinline preload="none" data-autoplay></video></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 3</b><span>2.2 – 3.3 s</span></div><div class="ref-line"><span class="chip video">Video</span><span class="ref-note video">Lighting / Weather · 1.5 s clip</span></div><p>He calls out for a waiter, and the camera cuts to another man in a plaid shirt who responds.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb empty">text only</div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 4</b><span>3.3 – 4.7 s</span></div><p>The first man then stands up, his expression serious and focused as he looks towards the right, creating a tense and expectant atmosphere.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb"><video src="assets/cases/case10-v2v/ref_shot5_video.mp4" poster="assets/cases/case10-v2v/ref_shot5_video.jpg" muted loop playsinline preload="none" data-autoplay></video></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 5</b><span>4.7 – 6.3 s</span></div><div class="ref-line"><span class="chip video">Video</span><span class="ref-note video">Style Transfer · 0.7 s clip</span></div><p>The first man then stands up, his expression serious and focused as he looks towards the right, creating a tense and expectant atmosphere.</p></div></li></ol></div>
+  </div>
+</article>
+<article class="case" data-task="V2V">
+  <div class="case-title"><span class="tag V2V">V2V</span><h3>Chef at the racetrack</h3><span class="case-meta">3 shots · 9.8 s · text + video references</span></div>
+  <div class="case-grid">
+    <div class="case-video"><div class="video-frame"><video src="assets/cases/case12-v2v/ours.mp4" poster="assets/cases/case12-v2v/poster.jpg" muted loop playsinline preload="none" controls data-autoplay></video></div></div>
+    <div class="case-cond"><div class="style-box"><span class="style-label">Shared style</span>Realistic with a nostalgic, filmic quality, reminiscent of a home movie or a classic family drama. Bright, diffuse natural daylight, creating soft shadows and an evenly lit scene. The light source is high and overhead, typical of an outdoor daytime setting. Joyful, nostalgic, and heartwarming. The scene conveys a sense of happy family moments and cherished memories being captured.</div><ol class="shot-list"><li class="shot-row"><div class="thumbs"><div class="thumb"><video src="assets/cases/case12-v2v/ref_shot1_video.mp4" poster="assets/cases/case12-v2v/ref_shot1_video.jpg" muted loop playsinline preload="none" data-autoplay></video></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 1</b><span>0.0 – 1.3 s</span></div><div class="ref-line"><span class="chip video">Video</span><span class="ref-note video">Style Transfer · 1.7 s clip</span></div><p>A man dressed as a chef joyfully waves from behind a guardrail at a racetrack.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb empty">text only</div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 2</b><span>1.3 – 3.3 s</span></div><p>The scene cuts to a happy family in the crowd, with a young boy waving back from his father&#x27;s shoulders.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb"><video src="assets/cases/case12-v2v/ref_shot3_video.mp4" poster="assets/cases/case12-v2v/ref_shot3_video.jpg" muted loop playsinline preload="none" data-autoplay></video></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 3</b><span>3.3 – 9.8 s</span></div><div class="ref-line"><span class="chip video">Video</span><span class="ref-note video">Background Retexture · 3.7 s clip</span></div><p>The chef then raises a Polaroid camera, takes a picture, and proudly displays the developing photo with a wide smile, capturing a moment of pure happiness.</p></div></li></ol></div>
+  </div>
+</article>
+<article class="case" data-task="V2V">
+  <div class="case-title"><span class="tag V2V">V2V</span><h3>Supernatural horror</h3><span class="case-meta">4 shots · 8.5 s · text + video references</span></div>
+  <div class="case-grid">
+    <div class="case-video"><div class="video-frame"><video src="assets/cases/case13-v2v/ours.mp4" poster="assets/cases/case13-v2v/poster.jpg" muted loop playsinline preload="none" controls data-autoplay></video></div></div>
+    <div class="case-cond"><div class="style-box"><span class="style-label">Shared style</span>Realistic with strong horror and supernatural elements. The visual style is cinematic and dramatic, using high-contrast lighting and unsettling imagery. Dramatic, high-contrast chiaroscuro lighting. A strong, cool-toned key light from the side illuminates the subject, while the rest of the scene is plunged into shadow. The fire provides a secondary, warm, flickering light source. Intensely horrific and suspenseful. A palpable sense of terror, panic, and supernatural dread permeates the scene.</div><ol class="shot-list"><li class="shot-row"><div class="thumbs"><div class="thumb"><video src="assets/cases/case13-v2v/ref_shot1_video.mp4" poster="assets/cases/case13-v2v/ref_shot1_video.jpg" muted loop playsinline preload="none" data-autoplay></video></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 1</b><span>0.0 – 2.8 s</span></div><div class="ref-line"><span class="chip video">Video</span><span class="ref-note video">Style Transfer · 3.9 s clip</span></div></div></li><li class="shot-row"><div class="thumbs"><div class="thumb empty">text only</div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 2</b><span>2.8 – 4.0 s</span></div><p>Her face, illuminated by a harsh side light, contorts in fear as she looks at something off-screen.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb empty">text only</div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 3</b><span>4.0 – 5.0 s</span></div><p>The scene cuts to a grotesque, horned figure engulfed in flames, its face twisting in agony.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb"><video src="assets/cases/case13-v2v/ref_shot4_video.mp4" poster="assets/cases/case13-v2v/ref_shot4_video.jpg" muted loop playsinline preload="none" data-autoplay></video></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 4</b><span>5.0 – 8.5 s</span></div><div class="ref-line"><span class="chip video">Video</span><span class="ref-note video">Camera / Lens Filter · 3.7 s clip</span></div></div></li></ol></div>
+  </div>
+</article>
+<article class="case" data-task="V2V">
+  <div class="case-title"><span class="tag V2V">V2V</span><h3>Couple sharing a meal</h3><span class="case-meta">3 shots · 10.3 s · text + video references</span></div>
+  <div class="case-grid">
+    <div class="case-video"><div class="video-frame"><video src="assets/cases/case14-v2v/ours.mp4" poster="assets/cases/case14-v2v/poster.jpg" muted loop playsinline preload="none" controls data-autoplay></video></div></div>
+    <div class="case-cond"><div class="style-box"><span class="style-label">Shared style</span>Realistic, contemporary drama. Soft, diffuse frontal lighting that evenly illuminates the subjects, minimizing shadows and creating a bright, clean look. The light source appears to be large and off-camera. Intimate and casual, with a lighthearted and slightly playful mood between the two individuals.</div><ol class="shot-list"><li class="shot-row"><div class="thumbs"><div class="thumb"><video src="assets/cases/case14-v2v/ref_shot1_video.mp4" poster="assets/cases/case14-v2v/ref_shot1_video.jpg" muted loop playsinline preload="none" data-autoplay></video></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 1</b><span>0.0 – 3.0 s</span></div><div class="ref-line"><span class="chip video">Video</span><span class="ref-note video">Background Retexture · 3.7 s clip</span></div></div></li><li class="shot-row"><div class="thumbs"><div class="thumb empty">text only</div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 2</b><span>3.0 – 7.5 s</span></div><p>The scene opens with a close-up of the man speaking to the woman, who smiles in response.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb"><video src="assets/cases/case14-v2v/ref_shot3_video.mp4" poster="assets/cases/case14-v2v/ref_shot3_video.jpg" muted loop playsinline preload="none" data-autoplay></video></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 3</b><span>7.5 – 10.3 s</span></div><div class="ref-line"><span class="chip video">Video</span><span class="ref-note video">Style Transfer · 2.2 s clip</span></div></div></li></ol></div>
+  </div>
+</article>
+<article class="case" data-task="TIV2V">
+  <div class="case-title"><span class="tag TIV2V">TIV2V</span><h3>Thoughtful pause at a desk</h3><span class="case-meta">3 shots · 9.3 s · text + image anchor + video references</span></div>
+  <div class="case-grid">
+    <div class="case-video"><div class="video-frame"><video src="assets/cases/case15-tiv2v/ours.mp4" poster="assets/cases/case15-tiv2v/poster.jpg" muted loop playsinline preload="none" controls data-autoplay></video></div></div>
+    <div class="case-cond"><div class="style-box"><span class="style-label">Shared style</span>Realistic and cinematic, with a soft-focus aesthetic that creates a gentle, intimate mood. Soft, warm key light from a desk lamp on the left, creating a gentle glow on the subject. A warm, out-of-focus practical lamp provides ambient backlight, enhancing the cozy atmosphere. Contemplative, quiet, and slightly melancholic. The mood is introspective and personal, focusing on a moment of thoughtful pause.</div><ol class="shot-list"><li class="shot-row"><div class="thumbs"><div class="thumb"><video src="assets/cases/case15-tiv2v/ref_shot1_video.mp4" poster="assets/cases/case15-tiv2v/ref_shot1_video.jpg" muted loop playsinline preload="none" data-autoplay></video></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 1</b><span>0.0 – 2.3 s</span></div><div class="ref-line"><span class="chip video">Video</span><span class="ref-note video">Style Transfer · 1.5 s clip</span></div><p>In a warmly lit bedroom, a young woman with her hair up is initially focused on a task.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb"><img src="assets/cases/case15-tiv2v/ref_shot2_image.jpg" alt="Image anchor" loading="lazy"></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 2</b><span>2.3 – 3.8 s</span></div><div class="ref-line"><span class="chip image">Image</span><span class="ref-note image">unedited frame @ 3.2 s</span></div><p>The camera then cuts to a close-up of her hands as she handles a pen over a notebook.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb"><video src="assets/cases/case15-tiv2v/ref_shot3_video.mp4" poster="assets/cases/case15-tiv2v/ref_shot3_video.jpg" muted loop playsinline preload="none" data-autoplay></video></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 3</b><span>3.8 – 9.3 s</span></div><div class="ref-line"><span class="chip video">Video</span><span class="ref-note video">Spatial Relation Change · 3.4 s clip</span></div><p>Returning to her face, she looks up from her work, her expression shifting to one of deep thought as she gazes off-screen.</p></div></li></ol></div>
+  </div>
+</article>
+<article class="case" data-task="TIV2V">
+  <div class="case-title"><span class="tag TIV2V">TIV2V</span><h3>Gossip in a classroom</h3><span class="case-meta">4 shots · 9.7 s · text + image anchor + video references</span></div>
+  <div class="case-grid">
+    <div class="case-video"><div class="video-frame"><video src="assets/cases/case17-tiv2v/ours.mp4" poster="assets/cases/case17-tiv2v/poster.jpg" muted loop playsinline preload="none" controls data-autoplay></video></div></div>
+    <div class="case-cond"><div class="style-box"><span class="style-label">Shared style</span>Realistic. The video is shot in a contemporary, naturalistic style typical of a modern television drama. Bright, even overhead lighting, likely from fluorescent fixtures. It creates a flat, high-key look with minimal shadows, illuminating the entire scene clearly. Tense and gossipy. The characters&#x27; expressions and body language convey a sense of shock, concern, and intense discussion, creating a dramatic and slightly conspiratorial mood.</div><ol class="shot-list"><li class="shot-row"><div class="thumbs"><div class="thumb"><video src="assets/cases/case17-tiv2v/ref_shot1_video.mp4" poster="assets/cases/case17-tiv2v/ref_shot1_video.jpg" muted loop playsinline preload="none" data-autoplay></video></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 1</b><span>0.0 – 2.3 s</span></div><div class="ref-line"><span class="chip video">Video</span><span class="ref-note video">Camera / Lens Filter · 3.2 s clip</span></div><p>In a brightly lit children&#x27;s classroom, a group of five women are gathered in a tense discussion.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb empty">text only</div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 2</b><span>2.3 – 3.5 s</span></div><p>One woman, dressed in black, reacts with a shocked expression, her mouth agape.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb"><img src="assets/cases/case17-tiv2v/ref_shot3_image.jpg" alt="Image anchor" loading="lazy"></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 3</b><span>3.5 – 7.0 s</span></div><div class="ref-line"><span class="chip image">Image</span><span class="ref-note image">unedited frame @ 5.3 s</span></div><p>Another woman in a floral dress holds a folder and looks on with a worried face, while a third in a striped sweater speaks with urgency.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb"><video src="assets/cases/case17-tiv2v/ref_shot4_video.mp4" poster="assets/cases/case17-tiv2v/ref_shot4_video.jpg" muted loop playsinline preload="none" data-autoplay></video></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 4</b><span>7.0 – 9.7 s</span></div><div class="ref-line"><span class="chip video">Video</span><span class="ref-note video">Motion Change · 1.4 s clip</span></div><p>The scene is filled with colorful decorations and bookshelves, contrasting with the serious nature of their conversation.</p></div></li></ol></div>
+  </div>
+</article>
+<article class="case" data-task="TIV2V">
+  <div class="case-title"><span class="tag TIV2V">TIV2V</span><h3>Sunlit outdoor market</h3><span class="case-meta">3 shots · 9.8 s · text + image anchor + video references</span></div>
+  <div class="case-grid">
+    <div class="case-video"><div class="video-frame"><video src="assets/cases/case18-tiv2v/ours.mp4" poster="assets/cases/case18-tiv2v/poster.jpg" muted loop playsinline preload="none" controls data-autoplay></video></div></div>
+    <div class="case-cond"><div class="style-box"><span class="style-label">Shared style</span>Documentary. Bright, direct natural sunlight from a high angle, creating strong, hard-edged shadows. The lighting is high-key, illuminating the scene clearly with minimal diffusion. Documentary and observational, capturing a slice of daily life in a bustling, sunlit outdoor market. The mood is neutral and candid, focusing on the interactions and environment.</div><ol class="shot-list"><li class="shot-row"><div class="thumbs"><div class="thumb"><video src="assets/cases/case18-tiv2v/ref_shot1_video.mp4" poster="assets/cases/case18-tiv2v/ref_shot1_video.jpg" muted loop playsinline preload="none" data-autoplay></video></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 1</b><span>0.0 – 3.8 s</span></div><div class="ref-line"><span class="chip video">Video</span><span class="ref-note video">Style Transfer · 3.7 s clip</span></div></div></li><li class="shot-row"><div class="thumbs"><div class="thumb"><img src="assets/cases/case18-tiv2v/ref_shot2_image.jpg" alt="Image anchor" loading="lazy"></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 2</b><span>3.8 – 6.7 s</span></div><div class="ref-line"><span class="chip image">Image</span><span class="ref-note image">unedited frame @ 5.3 s</span></div><p>Initially, two men are seen at a table covered with a patterned cloth, examining documents.</p></div></li><li class="shot-row"><div class="thumbs"><div class="thumb"><video src="assets/cases/case18-tiv2v/ref_shot3_video.mp4" poster="assets/cases/case18-tiv2v/ref_shot3_video.jpg" muted loop playsinline preload="none" data-autoplay></video></div></div><div class="shot-body">
+<div class="shot-head"><b>Shot 3</b><span>6.7 – 9.8 s</span></div><div class="ref-line"><span class="chip video">Video</span><span class="ref-note video">Style Transfer · 3.0 s clip</span></div></div></li></ol></div>
+  </div>
+</article>
+</section>
+
+<section id="results" class="panel" style="--accent:#2563eb">
+  <h2>Quantitative Results</h2>
+  <h3 id="benchmark">Refrain Benchmark</h3>
+  <p>300 requests (30 T2V, 30 TI2V, 120 V2V, 120 TIV2V) built from held-out videos with deliberately conflicting references.</p>
+  <div class="table-scroll"><table>
+    <thead><tr><th>Method</th><th>Params (B)</th><th>FLOPs (P) ↓</th><th>MAE (s) ↓</th><th>CLIP-T ↑</th><th>TA ↑</th><th>SDC ↑</th></tr></thead>
+    <tbody>
+      <tr><td>HunyuanVideo1.5</td><td>8.49</td><td><b>324.4</b></td><td>0.802</td><td>0.212</td><td>−0.386</td><td>0.090</td></tr>
+      <tr><td>Phantom</td><td>14.29</td><td>648.7</td><td>–</td><td>0.203</td><td>−0.675</td><td>0.130</td></tr>
+      <tr><td>RefAlign</td><td>14.29</td><td>807.7</td><td>–</td><td>0.204</td><td>−0.530</td><td>0.125</td></tr>
+      <tr><td>StoryMem</td><td>29.80</td><td>493.2</td><td>–</td><td>0.197</td><td>−0.679</td><td>0.175</td></tr>
+      <tr><td>VACE</td><td>17.34</td><td>608.9</td><td>–</td><td>0.217</td><td>−0.336</td><td>0.108</td></tr>
+      <tr class="ours"><td>Refrain (ours)</td><td>8.49</td><td><b>324.4</b></td><td><b>0.199</b></td><td><b>0.222</b></td><td><b>−0.221</b></td><td><b>0.315</b></td></tr>
+    </tbody>
+  </table></div>
+  <div class="table-scroll"><table>
+    <thead><tr><th>Method</th><th>Inter-shot Semantic ↑</th><th>Inter-shot Subject ↑</th><th>Inter-shot Scene ↑</th><th>Ref. Semantic ↑</th><th>Ref. Subject ↑</th><th>Ref. Background ↑</th></tr></thead>
+    <tbody>
+      <tr><td>HunyuanVideo1.5</td><td>0.566</td><td>0.439</td><td>0.478</td><td>–</td><td>–</td><td>–</td></tr>
+      <tr><td>Phantom</td><td>0.491</td><td>0.345</td><td>0.385</td><td>0.556</td><td>0.450</td><td>0.376</td></tr>
+      <tr><td>RefAlign</td><td>0.493</td><td>0.341</td><td>0.361</td><td>0.614</td><td>0.469</td><td>0.448</td></tr>
+      <tr><td>StoryMem</td><td>0.708</td><td>0.489</td><td><b>0.531</b></td><td>0.478</td><td>0.412</td><td>0.388</td></tr>
+      <tr><td>VACE</td><td>0.492</td><td>0.362</td><td>0.361</td><td>–</td><td>–</td><td>–</td></tr>
+      <tr class="ours"><td>Refrain (ours)</td><td><b>0.710</b></td><td><b>0.494</b></td><td>0.491</td><td><b>0.737</b></td><td><b>0.671</b></td><td><b>0.674</b></td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">FLOPs are analytical denoising estimates for a 480×832, 241-frame, three-shot video with three 49-frame references under each method's own sampling schedule, excluding encoders and VAE decoding. “–” means the metric does not apply to that method's protocol.</p>
+
+  <h3>Ablations</h3>
+  <div class="ablations">
+    <div>
+      <h4>Reference-editing supervision</h4>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Train</th><th>Test</th><th>SDC ↑</th></tr></thead>
+        <tbody>
+          <tr class="ours"><td>Independent</td><td>Independent</td><td><b>0.315</b></td></tr>
+          <tr><td>Independent</td><td>Shared</td><td>0.299</td></tr>
+          <tr><td>Shared</td><td>Independent</td><td>0.301</td></tr>
+          <tr><td>Shared</td><td>Shared</td><td>0.304</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div>
+      <h4>Shot coordinates and placement</h4>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Coords / placement</th><th>MAE ↓</th><th>SDC ↑</th></tr></thead>
+        <tbody>
+          <tr class="ours"><td>Shot-aware / Sparse</td><td><b>0.199</b></td><td><b>0.315</b></td></tr>
+          <tr><td>Shot-aware / Resample</td><td>0.233</td><td>0.310</td></tr>
+          <tr><td>None / Sparse</td><td>0.281</td><td>0.304</td></tr>
+          <tr><td>None / Resample</td><td>0.293</td><td>0.289</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div>
+      <h4>Pure T2V (no references)</h4>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Training</th><th>SDC ↑</th></tr></thead>
+        <tbody>
+          <tr><td>T2V pre-training</td><td>0.253</td></tr>
+          <tr class="ours"><td>+ independent edits</td><td><b>0.303</b></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+  <p class="note">Training on independently edited references also makes text-only generation more consistent.</p>
+
+  <h3>Validating SDC</h3>
+  <div class="table-scroll"><table>
+    <thead><tr><th>Single-shot style edit (108,909 videos)</th><th>Score before → after</th><th>Detected @ 5% FPR ↑</th></tr></thead>
+    <tbody>
+      <tr><td>CLIP</td><td>0.836 → 0.711</td><td>48.6%</td></tr>
+      <tr><td>ViCLIP</td><td>0.609 → 0.426</td><td>38.6%</td></tr>
+      <tr><td>DINO</td><td>0.385 → 0.297</td><td>10.0%</td></tr>
+      <tr class="ours"><td>SDC</td><td>0.346 → 0.047</td><td><b>78.0%</b></td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Human study: six professional raters labelled 120 clips. SDC separates consistent from inconsistent clips with AUC 0.969 (95% CI [0.931, 0.995]).</p>
+</section>
+
+<section id="citation" class="panel" style="--accent:#52525b">
+  <h2>Citation</h2>
+  <div class="bibtex-wrap">
+    <button class="copy" type="button">Copy</button>
+<pre class="bibtex" id="bibtex">@article{yan2026refrain,
+  title   = {Refrain: Learning Multi-Shot Consistency from Inconsistent References for A$^2$O Video Generation},
+  author  = {Yan, Hongru and Wu, Yue and Zhang, Jian-Wei and Xie, Liangbin and Zheng, Mingzhe and Gao, Shenghua},
+  journal = {arXiv preprint arXiv:TODO},
+  year    = {2026}
+}</pre>
+  </div>
+</section>
+
+</main>
+
+<footer>Refrain builds on <a href="https://github.com/Tencent-Hunyuan/HunyuanVideo-1.5">HunyuanVideo-1.5</a>.</footer>
+
+<script>
+document.querySelectorAll('.play-together').forEach(btn => btn.addEventListener('click', () => {
+  const vids = [...btn.closest('.case').querySelectorAll('.compare-grid video')];
+  const playing = !vids[0].paused;
+  vids.forEach(v => { v.currentTime = 0; playing ? v.pause() : v.play(); });
+  btn.textContent = playing ? '▶ Play together' : '❚❚ Pause';
+}));
+
+// Play gallery videos only while they are on screen.
+const io = new IntersectionObserver(entries => {
+  for (const e of entries) e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause();
+}, { threshold: 0.35 });
+document.querySelectorAll('video[data-autoplay]').forEach(v => io.observe(v));
+
+document.querySelectorAll('.filter').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('.filter').forEach(b => b.classList.toggle('active', b === btn));
+  const task = btn.dataset.task;
+  document.querySelectorAll('#gallery .case').forEach(c => { c.hidden = task !== 'all' && c.dataset.task !== task; });
+}));
+
+document.querySelector('.copy').addEventListener('click', e => {
+  navigator.clipboard.writeText(document.getElementById('bibtex').textContent);
+  e.target.textContent = 'Copied';
+  setTimeout(() => { e.target.textContent = 'Copy'; }, 1500);
+});
+</script>
+</body>
+</html>
