@@ -10,11 +10,6 @@
 
 <p align="center">
 <a href="https://refrain-page.github.io/"><img src="https://img.shields.io/badge/Project-Page-ff6f61.svg" alt="Project Page"></a>
-<a href="https://arxiv.org/abs/2611.27806"><img src="https://img.shields.io/badge/arXiv-2611.27806-b31b1b.svg" alt="arXiv"></a>
-<a href="https://github.com/Tencent-Hunyuan/Refrain"><img src="https://img.shields.io/badge/GitHub-Code-181717.svg?logo=github" alt="Code"></a>
-<a href="#refrain-benchmark"><img src="https://img.shields.io/badge/Benchmark-300%20requests-2ea44f.svg" alt="Benchmark"></a>
-<a href="#shot-debiased-consistency-sdc"><img src="https://img.shields.io/badge/Metric-SDC-8250df.svg" alt="SDC"></a>
-<a href="https://pytorch.org/"><img src="https://img.shields.io/badge/PyTorch-2.6-ee4c2c.svg" alt="PyTorch"></a>
 <a href="https://github.com/Tencent-Hunyuan/HunyuanVideo-1.5"><img src="https://img.shields.io/badge/Base%20Model-HunyuanVideo--1.5-6a5acd.svg" alt="Base Model"></a>
 </p>
 
