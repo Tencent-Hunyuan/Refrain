@@ -10,7 +10,7 @@
 
 <p align="center">
 <a href="https://refrain-page.github.io/"><img src="https://img.shields.io/badge/Project-Page-ff6f61.svg" alt="Project Page"></a>
-<a href="https://github.com/Tencent-Hunyuan/HunyuanVideo-1.5"><img src="https://img.shields.io/badge/Base%20Model-HunyuanVideo--1.5-6a5acd.svg" alt="Base Model"></a>
+<a href="https://arxiv.org/abs/2611.27806"><img src="https://img.shields.io/badge/arXiv-2611.27806-b31b1b.svg" alt="arXiv"></a>
 </p>
 
 <p align="center">
