@@ -40,3 +40,4 @@ __pycache__/
 
 # Local copy of the arXiv manuscript
 /Refrain_arxiv.pdf
+/Refrain_arxiv_metadata.txt

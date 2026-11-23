@@ -10,7 +10,7 @@
 
 <p align="center">
 <a href="https://refrain-page.github.io/"><img src="https://img.shields.io/badge/Project-Page-ff6f61.svg" alt="Project Page"></a>
-<a href="#"><img src="https://img.shields.io/badge/arXiv-coming%20soon-b31b1b.svg" alt="arXiv"></a>
+<a href="https://arxiv.org/abs/2611.27806"><img src="https://img.shields.io/badge/arXiv-2611.27806-b31b1b.svg" alt="arXiv"></a>
 <a href="https://github.com/Tencent-Hunyuan/Refrain"><img src="https://img.shields.io/badge/GitHub-Code-181717.svg?logo=github" alt="Code"></a>
 <a href="#refrain-benchmark"><img src="https://img.shields.io/badge/Benchmark-300%20requests-2ea44f.svg" alt="Benchmark"></a>
 <a href="#shot-debiased-consistency-sdc"><img src="https://img.shields.io/badge/Metric-SDC-8250df.svg" alt="SDC"></a>
@@ -546,7 +546,7 @@ Refrain builds on [HunyuanVideo-1.5](https://github.com/Tencent-Hunyuan/HunyuanV
 @article{yan2026refrain,
   title   = {Refrain: Learning Multi-Shot Consistency from Inconsistent References for A$^2$O Video Generation},
   author  = {Yan, Hongru and Wu, Yue and Zhang, Jian-Wei and Xie, Liangbin and Zheng, Mingzhe and Gao, Shenghua},
-  journal = {arXiv preprint arXiv:TODO},
+  journal = {arXiv preprint arXiv:2611.27806},
   year    = {2026}
 }
 ```
