@@ -402,8 +402,8 @@ pip install -e . --no-build-isolation --no-deps
 ```text
 weights/
 ├── Qwen3-VL-8B-Instruct/        # public: hf download Qwen/Qwen3-VL-8B-Instruct --local-dir weights/Qwen3-VL-8B-Instruct
-├── vae_3d/refrain_vae/          # 3D VAE (not released)
-├── initialization/              # stage-1 initialization DiT (training only, not released)
+├── vae_3d/refrain_vae/
+├── initialization/
 └── evaluation/                  # metric models
 ```
 
